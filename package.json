@@ -13,7 +13,7 @@
     "test": "vite build  --mode test",
     "pre": "vite build  --mode pre",
     "prod": "vite build  --mode production",
-    "localhost": "vite --mode localhost",
+    "local": "vite --mode localhost",
     "build": "vue-tsc --noEmit && vite build",
     "serve": "vite preview"
   },
