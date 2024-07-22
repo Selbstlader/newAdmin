@@ -21,7 +21,7 @@ export const appDefaultConfig: AppConfig = {
   // 侧边菜单宽度 ， 默认为200px
   sideMenuWidth: 200,
   // 菜单主题
-  sideMenuTheme: 'dark',
+  sideMenuTheme: 'light',
   // 主题颜色索引
   colorIndex: 0,
   // 顶部菜单页面宽度

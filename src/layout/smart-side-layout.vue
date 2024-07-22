@@ -12,26 +12,26 @@
       <a-layout-header class="layout-header">
         <a-row class="layout-header-user" justify="space-between">
           <a-col class="layout-header-left">
-            <span class="collapsed-button">
+            <!-- <span class="collapsed-button">
               <menu-unfold-outlined v-if="collapsed" class="trigger" @click="() => (collapsed = !collapsed)" />
               <menu-fold-outlined v-else class="trigger" @click="() => (collapsed = !collapsed)" />
-            </span>
-            <a-tooltip placement="bottom">
+            </span> -->
+            <!-- <a-tooltip placement="bottom">
               <template #title>首页</template>
               <span class="home-button" @click="goHome">
                 <home-outlined class="trigger" />
               </span>
-            </a-tooltip>
+            </a-tooltip> -->
             <span class="location-breadcrumb">
               <MenuLocationBreadcrumb />
             </span>
           </a-col>
           <!---用戶操作区域-->
-          <a-col class="layout-header-right">
+          <!-- <a-col class="layout-header-right">
             <HeaderUserSpace />
-          </a-col>
+          </a-col> -->
         </a-row>
-        <PageTag />
+        <!-- <PageTag /> -->
       </a-layout-header>
 
       <!--中间内容-->
@@ -55,18 +55,18 @@
           </keep-alive>
         </router-view>
       </a-layout-content>
-
+     
       <!-- footer 版权公司信息 -->
-      <a-layout-footer class="layout-footer" v-show="footerFlag">
+      <!-- <a-layout-footer class="layout-footer" v-show="footerFlag">
         <smart-footer />
-      </a-layout-footer>
+      </a-layout-footer> -->
       <!--- 回到顶部 -->
       <a-back-top :target="backTopTarget" :visibilityHeight="80" />
     </a-layout>
     <!-- 右侧帮助文档 help-doc -->
-    <a-layout-sider v-show="helpDocFlag" theme="light" :width="180" class="help-doc-sider" :trigger="null" style="min-height: 100%">
+    <!-- <a-layout-sider v-show="helpDocFlag" theme="light" :width="180" class="help-doc-sider" :trigger="null" style="min-height: 100%">
       <SideHelpDoc />
-    </a-layout-sider>
+    </a-layout-sider> -->
   </a-layout>
 </template>
 

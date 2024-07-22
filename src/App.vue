@@ -13,26 +13,26 @@
     <!---全局loading--->
     <a-spin :spinning="spinning" tip="稍等片刻，我在拼命加载中..." size="large">
       <!--- 路由 -->
-      <RouterView />
+      <SmartLayout></SmartLayout>
     </a-spin>
   </a-config-provider>
 </template>
 
 <script setup lang="ts">
-  import dayjs from 'dayjs';
-  import { computed, ComputedRef } from 'vue';
-  import { messages } from '/@/i18n/index';
-  import { useAppConfigStore } from '/@/store/modules/system/app-config';
-  import { useSpinStore } from './store/modules/system/spin';
-  import { LanguageType } from '/@/types/config';
+import dayjs from 'dayjs';
+import { computed, ComputedRef } from 'vue';
+import { messages } from '/@/i18n/index';
+import { useAppConfigStore } from '/@/store/modules/system/app-config';
+import { useSpinStore } from './store/modules/system/spin';
+import { LanguageType } from '/@/types/config';
+import SmartLayout from '/@/layout/index.vue';
+let language: LanguageType = useAppConfigStore().language;
+let lang: string = language.toString();
 
-  let language: LanguageType = useAppConfigStore().language;
-  let lang: string = language.toString();
+const antdLocale: ComputedRef<string> = computed(() => messages[lang].antdLocale);
+const dayjsLocale = computed(() => messages[lang].dayjsLocale);
+dayjs.locale(dayjsLocale.value);
 
-  const antdLocale: ComputedRef<string> = computed(() => messages[lang].antdLocale);
-  const dayjsLocale = computed(() => messages[lang].dayjsLocale);
-  dayjs.locale(dayjsLocale.value);
-
-  let spinStore = useSpinStore();
-  const spinning = computed(() => spinStore.loading);
+let spinStore = useSpinStore();
+const spinning = computed(() => spinStore.loading);
 </script>

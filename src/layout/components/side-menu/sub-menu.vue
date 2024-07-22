@@ -16,11 +16,12 @@
     <template v-for="item in menuInfo.children" :key="item.menuId">
       <template v-if="item.visibleFlag && !item.disabledFlag">
         <template v-if="!item.children">
-          <a-menu-item :key="item.menuId" @click="turnToPage(item)">
-            <template #icon>
+          <div class="menu-header"></div>
+          <a-menu-item :key="item.menuId" @click="turnToPage(item)" style="width: 140px; left: 45px">
+            <!-- <template #icon>
               <component :is="$antIcons[item.icon]" />
-            </template>
-            {{ item.menuName }}
+            </template> -->
+            <span style="right: 70px; position: absolute; top: 0">{{ item.menuName }}</span>
           </a-menu-item>
         </template>
         <template v-else>
@@ -31,15 +32,34 @@
   </a-sub-menu>
 </template>
 <script setup lang="ts">
-  const props = defineProps({
-    menuInfo: {
-      type: Object,
-      default: () => ({}),
-    },
-  });
+const props = defineProps({
+  menuInfo: {
+    type: Object,
+    default: () => ({}),
+  },
+});
 
-  const emits = defineEmits(['turnToPage']);
-  const turnToPage = (route) => {
-    emits('turnToPage', route);
-  };
+const emits = defineEmits(['turnToPage']);
+const turnToPage = (route) => {
+  emits('turnToPage', route);
+};
 </script>
+<style lang="less" scoped>
+:deep(.ant-menu-item-selected .ant-menu-item-only-child) {
+  padding-left: 0 !important; /* 将 padding-left 设置为 0 */
+}
+.menu-header {
+  position: relative; /* 使伪元素相对于此元素定位 */
+  display: inline-block; /* 如果你想让它和其他文本或元素在同一行显示 */
+}
+
+.menu-header::before {
+  content: ''; /* 显示的内容 */
+  position: absolute; /* 定位方式 */
+  left: 30px; /* 调整位置，使其紧挨着 .menu-header */
+  width: 2px; /* 竖线宽度 */
+  background-color: @gray-14;
+  height: 53px;
+  top: -5px;
+}
+</style>
