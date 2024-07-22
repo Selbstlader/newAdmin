@@ -62,7 +62,7 @@ export default defineConfig(({ mode, command }) => {
         javascriptEnabled: true,
       },
       scss: {
-        additionalData: `@use "@/assets/styles/index.scss" as *;`
+        additionalData: `@use "src/assets/styles/index.scss" as *;`
     }
     },
   },

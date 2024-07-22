@@ -1,6 +1,6 @@
-import http from '@/api/api'
-import * as Api from '@/api'
-import * as Utils from '@/utils'
+import http from '/@/api/api'
+import * as Api from '/@/api'
+import * as Utils from '/@/utils'
 
 /* #region ************************************************************* 文件系统 *****************************************************************  */
 export interface Files {

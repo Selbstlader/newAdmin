@@ -1,4 +1,4 @@
-import * as Utils from '@/utils';
+import * as Utils from '/@/utils';
 
 /* #region *************************************************************** 公用返回结构 ******************************************************************  */
 export interface CommonRes {

@@ -2,6 +2,7 @@ export * as Common from './common';       // 公共接口
 export * as BaseApi from './base';       // 基础接口
 export * as SystemApi from './system';    // 系统接口公共接口
 // export * as YjApi from './yingjia';       // 赢家接口
+export * as RoleApi from './system/role';  // 角色接口
 import http from './api';
 import * as MainApi from '../api'
 

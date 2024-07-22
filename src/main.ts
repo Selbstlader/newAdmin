@@ -39,7 +39,6 @@ import 'element-plus/es/components/message/style/css';
 import 'element-plus/es/components/message-box/style/css';
 import 'element-plus/es/components/notification/style/css';
 import 'element-plus/es/components/loading/style/css';
-
 // VXETable
 import VXETable from 'vxe-table'
 import VXETablePluginExportXLSX from 'vxe-table-plugin-export-xlsx'
@@ -83,6 +82,7 @@ function initVue() {
     // 支持 large、default、small
     size: Cookies.get('size') || 'default',
 });
+
 app.use(VXETable)
 VXETable.use(VXETablePluginExportXLSX)
   //注入权限

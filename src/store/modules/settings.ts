@@ -1,7 +1,7 @@
-import defaultSettings from '@/settings';
-import { useDynamicTitle } from '@/utils/dynamicTitle';
+import defaultSettings from '/@/settings';
+import { useDynamicTitle } from '/@/utils/dynamicTitle';
 import { defineStore } from 'pinia';
-import * as Utils from '@/utils'
+import * as Utils from '/@/utils'
 
 const { sideTheme, showSettings, topNav, tagsView, fixedHeader, sidebarLogo, dynamicTitle } = defaultSettings;
 

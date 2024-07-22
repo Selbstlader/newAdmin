@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
-import http from '@/api/api';
-import * as MainApi from '@/api';
-import * as Utils from '@/utils'
+import http from '/@/api/api';
+import * as MainApi from '/@/api';
+import * as Utils from '/@/utils'
 
 interface OrgnodeState  {
     tree: any;          // 组织架构树

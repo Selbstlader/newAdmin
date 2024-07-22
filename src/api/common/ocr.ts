@@ -1,5 +1,5 @@
-import http from '@/api/api'
-import * as Api from '@/api'
+import http from '/@/api/api'
+import * as Api from '/@/api'
 import axios from 'axios'
 
 /**

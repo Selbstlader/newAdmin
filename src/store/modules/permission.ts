@@ -1,12 +1,12 @@
-import auth from '@/plugins/auth';
-import router, { constantRoutes, dynamicRoutes } from '@/router';
-import { getRouters } from '@/api/menu';
-import Layout from '@/layout/index.vue';
-import ParentView from '@/components/ParentView/index.vue';
-import InnerLink from '@/layout/components/InnerLink/index.vue';
+import auth from '/@/plugins/auth';
+import router, { constantRoutes, dynamicRoutes } from '/@/router';
+import { getRouters } from '/@/api/menu';
+import Layout from '/@/layout/index.vue';
+import ParentView from '/@/components/ParentView/index.vue';
+import InnerLink from '/@/layout/components/InnerLink/index.vue';
 import { defineStore } from 'pinia';
 import { RouteRecordRaw } from 'vue-router';
-import useUserStore from '@/store/modules/user';
+import useUserStore from '/@/store/modules/user';
 
 
 // 匹配views里面所有的.vue文件

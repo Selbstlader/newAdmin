@@ -1,4 +1,4 @@
-import * as Utils from '@/utils';
+import * as Utils from '/@/utils';
 
 /* #region *************************************************************** 公用查询请求 ******************************************************************  */
 export class CommonReq {
@@ -7,6 +7,8 @@ export class CommonReq {
     protected tenantID?: number;                        // 租户编号
     protected tenantIDs?: number[];                     // 数据范围
     protected keyWord?: string;                         // 关键字
+    protected roleName?: string;                         // 岗位
+    protected remark?: string;                         // 备注
     protected orderByList?: ReqOrderByListItem[];       // 排序字段
     constructor(item: any, func?: any) {
         Utils.DataTools.NewMap.ConstructorObjDefault(this, item, func);

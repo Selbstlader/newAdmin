@@ -1,4 +1,4 @@
-import * as Utils from '@/utils';
+import * as Utils from '/@/utils';
 
 /* #region *************************************************************** 公用表格搜索结构 ******************************************************************  */
 export class CommonTableSearch {

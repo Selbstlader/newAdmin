@@ -1,6 +1,6 @@
-import * as Api from '@/api'
-import * as Utils from '@/utils'
-import http from '@/api/api';
+import * as Api from '/@/api'
+import * as Utils from '/@/utils'
+import http from '/@/api/api';
 
 /* #region *************************************************************** 字典数据结构 ************************************************************  */
 export interface Dic {
