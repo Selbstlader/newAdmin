@@ -2,32 +2,65 @@
   <div v-if="columns.length" class="card table-search">
     <el-form ref="formRef" :model="searchParam">
       <Grid ref="gridRef" :collapsed="collapsed" :gap="[20, 0]" :cols="searchCol">
-        <GridItem v-for="(item, index) in columns" :key="item.prop" v-bind="getResponsive(item)" :index="index">
-          <el-form-item>
-            <template #label>
-              <el-space :size="4">
-                <span>{{ `${item.search?.label ?? item.label}` }}</span>
-                <el-tooltip v-if="item.search?.tooltip" effect="dark" :content="item.search?.tooltip" placement="top">
-                  <i :class="'iconfont icon-yiwen'"></i>
-                </el-tooltip>
-              </el-space>
-              <span>&nbsp;:</span>
-            </template>
-            <SearchFormItem :column="item" :search-param="searchParam" />
-          </el-form-item>
+        <GridItem v-for="(item, index) in columns" :key="item.field" v-bind="getResponsive(item)" :index="index" class="z_header_input">
+          <div v-if="item.searchType == 'input' && showTopSearch" class="z_header_input_box">
+                            <div class="z_header_input_label">{{ item.title }}:</div>
+                            <el-input style="width: 232.36px;" @keyup.enter="topSearch(false)" v-model="searchs[item!.field!].value" :id="props.tableID + item.field" :placeholder="item.placeholder || '请输入'"/>
+                        </div>
+                        <div v-else-if="item.searchType == 'checkbox' && showTopSearch" class="z_header_input_box">
+                            <div class="z_header_input_label">{{ item.title }}:</div>
+                            <el-select multiple collapse-tags v-model="searchs[item!.field!].checkbox" style="width: 232.36px;" :id="props.tableID + item.field"
+                                clearable  :placeholder="item.placeholder || '请选择'" min="0" @change="(e: any) => bindChangeSelect(e, item.field)">
+                                <el-option v-for="(itemOptions, indexOptions) in item.options" :key="indexOptions"
+                                    :label="itemOptions.name" :value="itemOptions.name"/>
+                            </el-select>
+                        </div>
+                        <div v-else-if="item.searchType == 'select' && showTopSearch" class="z_header_input_box">
+                            <div class="z_header_input_label">{{ item.title }}:</div>
+                            <el-select collapse-tags v-model="searchs[item!.field!].value" style="width: 232.36px" :id="props.tableID + item.field"
+                                clearable  :placeholder="item.placeholder || '请选择'" min="0" @change="(e: any) => bindChangeSelect(e, item.field)">
+                                <el-option v-for="(itemOptions, indexOptions) in item.options" :key="indexOptions"
+                                    :label="itemOptions.name" :value="itemOptions.name"/>
+                            </el-select>
+                        </div>
+                        <div v-else-if="item.searchType == 'date' && showTopSearch" class="z_header_input_box">
+                            <div class="z_header_input_label">{{ item.title }}:</div>
+                            <el-date-picker @change="setSearch(item, true)" style="width: 300px" :id="props.tableID + item.field"
+                                v-model="searchs[item!.field!].elTime" type="daterange" value-format="YYYY-MM-DD"
+                                range-separator="至" start-placeholder="开始日期" end-placeholder="截止日期" size="default" />
+                        </div>
+                        <div v-else-if="item.searchType == 'datetime' && showTopSearch" class="z_header_input_box">
+                            <div class="z_header_input_label">{{ item.title }}:</div>
+                            <el-date-picker @change="setSearch(item, true)" style="width: 300px"
+                                v-model="searchs[item!.field!].elTime" type="datetimerange" value-format="YYYY-MM-DD HH:mm:ss" :default-time="defaultTime" :id="props.tableID + item.field"
+                                range-separator="至" start-placeholder="开始时间" end-placeholder="截止时间" size="default" />
+                        </div>
+                        <div v-else-if="item.searchType == 'month' && showTopSearch" class="z_header_input_box">
+                            <div class="z_header_input_label">{{ item.title }}:</div>
+                            <el-date-picker @change="setSearch(item, true)" style="width: 300px" :id="props.tableID + item.field"
+                                v-model="searchs[item!.field!].elTime" type="monthrange" value-format="YYYY-MM"
+                                range-separator="至" start-placeholder="开始日期" end-placeholder="截止日期" size="default" />
+                        </div>
+                        <div v-else-if="item.searchType == 'year' && showTopSearch" class="z_header_input_box">
+                            <div class="z_header_input_label">{{ item.title }}:</div>
+                            <el-date-picker @change="setSearch(item, true)" style="width: 300px" :id="props.tableID + item.field"
+                                v-model="searchs[item!.field!].value" type="year" value-format="YYYY" size="default" placeholder="请选择"  />
+                        </div>
+                        <div v-else-if="item.searchType == 'monthOne' && showTopSearch" class="z_header_input_box">
+                            <div class="z_header_input_label">{{ item.title }}:</div>
+                            <el-date-picker @change="setSearch(item, true)" style="width: 300px" :id="props.tableID + item.field"
+                                v-model="searchs[item!.field!].value" type="month" value-format="YYYY-MM" size="default" placeholder="请选择" />
+                        </div>
+                        <div v-else-if="item.searchType == 'range' && showTopSearch" class="z_header_input_box">
+                            <div class="z_header_input_label">{{ item.title }}:</div>
+                            <el-input style="width: 93px;" @keyup.enter="topSearch(false)" :id="props.tableID + item.field"
+                                v-model="searchs[item!.field!].minNumber"  :placeholder="item.placeholder || '请输入'"/>
+                            <div class="center_content" @click="setMaxNumber(item)">至</div>
+                            <el-input style="width: 93px;" @keyup.enter="topSearch(false)" :id="props.tableID + item.field"
+                                v-model="searchs[item!.field!].maxNumber"  :placeholder="item.placeholder || '请输入'"/>
+                        </div>
         </GridItem>
-        <GridItem suffix>
-          <div class="operation">
-            <el-button type="primary" :icon="Search" @click="search"> 搜索 </el-button>
-            <el-button :icon="Delete" @click="reset"> 重置 </el-button>
-            <el-button v-if="showCollapse" type="primary" link class="search-isOpen" @click="collapsed = !collapsed">
-              {{ collapsed ? "展开" : "合并" }}
-              <el-icon class="el-icon--right">
-                <component :is="collapsed ? ArrowDown : ArrowUp"/>
-              </el-icon>
-            </el-button>
-          </div>
-        </GridItem>
+       
       </Grid>
     </el-form>
   </div>
@@ -36,9 +69,9 @@
 import { computed, ref } from "vue";
 import { ColumnProps } from "/@/components/ProTable/interface";
 import { BreakPoint } from "/@/components/Grid/interface";
-import SearchFormItem from "./components/SearchFormItem.vue";
-import Grid from "@/components/Grid/index.vue";
-import GridItem from "@/components/Grid/components/GridItem.vue";
+// import SearchFormItem from "./components/SearchFormItem.vue";
+import Grid from "/@/components/Grid/index.vue";
+import GridItem from "/@/components/Grid/components/GridItem.vue";
 
 interface ProTableProps {
   columns?: ColumnProps[]; // 搜索配置列
@@ -48,6 +81,8 @@ interface ProTableProps {
   reset: (params: any) => void; // 重置方法
 }
 
+// header搜索信息
+const showTopSearch = ref(false)
 // 默认值
 const props = withDefaults(defineProps<ProTableProps>(), {
   columns: () => [],
