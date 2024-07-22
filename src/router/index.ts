@@ -16,7 +16,7 @@ import { routerArray } from './routers';
 import { PAGE_PATH_404, PAGE_PATH_LOGIN } from '/@/constants/common-const';
 import { HOME_PAGE_NAME } from '/@/constants/system/home-const';
 import SmartLayout from '/@/layout/smart-layout.vue';
-import { useUserStore } from '/@/store/modules/system/user';
+import { useUserStore } from '../store/modules/system/user';
 import { clearAllCoolies, getTokenFromCookie } from '/@/utils/cookie-util';
 import { localClear } from '/@/utils/local-util';
 

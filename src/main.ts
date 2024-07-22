@@ -23,13 +23,27 @@ import privilegePlugin from '/@/plugins/privilege-plugin';
 import smartEnumPlugin from '/@/plugins/smart-enums-plugin';
 import { buildRoutes, router } from '/@/router/index';
 import { store } from '/@/store/index';
-import { useUserStore } from '/@/store/modules/system/user';
+import { useUserStore } from './store/modules/system/user';
 import 'ant-design-vue/dist/reset.css';
 import 'vue3-tabs-chrome/dist/vue3-tabs-chrome.css';
 import '/@/theme/index.less';
 import { getTokenFromCookie } from '/@/utils/cookie-util';
 
+import Cookies from 'js-cookie';
+import ElementPlus from 'element-plus';
+import zhCn from 'element-plus/es/locale/lang/zh-cn'
 
+// import '@/assets/styles/index.scss'; // global css
+// element css
+import 'element-plus/es/components/message/style/css';
+import 'element-plus/es/components/message-box/style/css';
+import 'element-plus/es/components/notification/style/css';
+import 'element-plus/es/components/loading/style/css';
+
+// VXETable
+import VXETable from 'vxe-table'
+import VXETablePluginExportXLSX from 'vxe-table-plugin-export-xlsx'
+import 'vxe-table/lib/style.css'
 /*
  * -------------------- ※ 着重 解释说明下这里的初始化逻辑 begin ※ --------------------
  *
@@ -63,7 +77,14 @@ async function getLoginInfo() {
 
 function initVue() {
   let vueApp = createApp(App);
-  let app = vueApp.use(router).use(store).use(i18n).use(Antd).use(smartEnumPlugin, constantsInfo).use(privilegePlugin).use(JsonViewer);
+  let app = vueApp.use(router).use(store).use(i18n).use(Antd).use(smartEnumPlugin, constantsInfo).use(privilegePlugin).use(JsonViewer).use(ElementPlus, {
+    // locale: locale,
+    locale: zhCn,
+    // 支持 large、default、small
+    size: Cookies.get('size') || 'default',
+});
+app.use(VXETable)
+VXETable.use(VXETablePluginExportXLSX)
   //注入权限
   app.directive('privilege', {
     mounted(el, binding) {

@@ -20,7 +20,7 @@ import { useRouter } from 'vue-router';
 import RecursionMenu from './recursion-menu.vue';
 import logoImg from '/@/assets/images/logo/smart-admin-logo.png';
 import { HOME_PAGE_NAME } from '/@/constants/system/home-const';
-import { useAppConfigStore } from '/@/store/modules/system/app-config';
+import { useAppConfigStore } from '../../../store/modules/system/app-config';
 
 const websiteName = computed(() => useAppConfigStore().websiteName);
 const sideMenuWidth = computed(() => 'width:' + useAppConfigStore().sideMenuWidth + 'px');

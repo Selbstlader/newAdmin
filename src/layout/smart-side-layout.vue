@@ -81,7 +81,7 @@
   import { smartKeepAlive } from './smart-keep-alive';
   import IframeIndex from '/@/components/framework/iframe/iframe-index.vue';
   import watermark from '/@/lib/smart-wartermark';
-  import { useUserStore } from '/@/store/modules/system/user';
+  import { useUserStore } from '../store/modules/system/user';
   import SideHelpDoc from './components/side-help-doc/index.vue';
   import { useRouter } from 'vue-router';
   import { HOME_PAGE_NAME } from '/@/constants/system/home-const';

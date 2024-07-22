@@ -36,7 +36,7 @@
 <script setup lang="ts">
 import { computed, ref, onMounted } from 'vue';
 import { loginApi } from '/@/api/system/login/login-api';
-import { useUserStore } from '/@/store/modules/system/user';
+import { useUserStore } from '../../../store/modules/system/user';
 import { clearAllCoolies } from '/@/utils/cookie-util';
 import { localClear } from '/@/utils/local-util';
 import { smartSentry } from '/@/lib/smart-sentry';

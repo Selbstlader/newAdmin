@@ -14,7 +14,7 @@
 
 <script setup>
 import { computed, onMounted } from 'vue';
-import { useAppConfigStore } from '/@/store/modules/system/app-config';
+import { useAppConfigStore } from '../../../store/modules/system/app-config';
 import DefaultTab from './components/default-tab.vue';
 import AntdTab from './components/antd-tab.vue';
 import { PAGE_TAG_ENUM } from '/@/constants/layout-const.ts';

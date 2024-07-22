@@ -9,11 +9,16 @@
  */
 import { resolve } from 'path';
 import vue from '@vitejs/plugin-vue';
-
+import { defineConfig, loadEnv } from 'vite';
+import createVitePlugins from './src/vite/plugins';
 const pathResolve = (dir) => {
   return resolve(__dirname, '.', dir);
 };
-export default {
+
+export default defineConfig(({ mode, command }) => {
+  const env = loadEnv(mode, process.cwd());
+    const { VITE_APP_ENV } = env;
+ return{
   base: process.env.NODE_ENV === 'production' ? '/manages/' : '/',
   root: process.cwd(),
   resolve: {
@@ -39,7 +44,7 @@ export default {
     host: '0.0.0.0',
     port: 8080,
   },
-  plugins: [vue()],
+  plugins: [createVitePlugins(env, command === 'build')],
   optimizeDeps: {
     include: ['ant-design-vue/es/locale/zh_CN', 'dayjs/locale/zh-cn', 'ant-design-vue/es/locale/en_US'],
     exclude: ['vue-demi'],
@@ -56,10 +61,14 @@ export default {
         },
         javascriptEnabled: true,
       },
+      scss: {
+        additionalData: `@use "@/assets/styles/index.scss" as *;`
+    }
     },
   },
   define: {
     __INTLIFY_PROD_DEVTOOLS__: false,
     'process.env': process.env,
   },
-};
+ }
+});

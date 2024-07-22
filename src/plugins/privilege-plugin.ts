@@ -7,7 +7,7 @@
  * @Email:     lab1024@163.com
  * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012
  */
-import { useUserStore } from '/@/store/modules/system/user';
+import { useUserStore } from '../store/modules/system/user';
 import { App } from 'vue';
 
 const privilege = (value: string) => {

@@ -72,7 +72,7 @@ import { helpDocCatalogApi } from '/@/api/support/help-doc/help-doc-catalog-api'
 import { SmartLoading } from '/@/components/framework/smart-loading';
 import { HOME_PAGE_NAME } from '/@/constants/system/home-const';
 import watermark from '/@/lib/smart-wartermark';
-import { useUserStore } from '/@/store/modules/system/user';
+import { useUserStore } from '../store/modules/system/user';
 import HeaderAvatar from './components/header-user-space/header-avatar.vue';
 
 const websiteName = computed(() => useAppConfigStore().websiteName);

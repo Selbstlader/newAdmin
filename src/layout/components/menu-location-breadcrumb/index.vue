@@ -15,7 +15,7 @@
 </template>
 <script setup lang="ts">
 import { useRoute, useRouter } from 'vue-router';
-import { useUserStore } from '/@/store/modules/system/user';
+import { useUserStore } from '../../../store/modules/system/user';
 import { computed } from 'vue';
 import { useAppConfigStore } from '/@/store/modules/system/app-config';
 

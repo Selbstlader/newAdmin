@@ -24,7 +24,7 @@
   import _ from 'lodash';
   import RoleTreeCheckbox from './role-tree-checkbox.vue';
   import { roleMenuApi } from '/@/api/system/role-menu/role-menu-api';
-  import { useRoleStore } from '/@/store/modules/system/role';
+  import { useRoleStore } from '../../../../../../store/modules/system/role';
   import { SmartLoading } from '/@/components/framework/smart-loading';
 import { smartSentry } from '/@/lib/smart-sentry';
 

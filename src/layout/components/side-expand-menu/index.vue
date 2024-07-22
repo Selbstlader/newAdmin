@@ -19,7 +19,7 @@
   import { computed, ref } from 'vue';
   import RecursionMenu from './recursion-menu.vue';
   import TopMenu from './top-menu.vue';
-  import { useUserStore } from '/@/store/modules/system/user';
+  import { useUserStore } from '../../../store/modules/system/user';
 
   defineEmits(['update:value']);
   const menuTree = computed(() => useUserStore().getMenuTree || []);

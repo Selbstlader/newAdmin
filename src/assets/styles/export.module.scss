@@ -1,0 +1,10 @@
+@import './variables.module.scss';
+
+:export {
+  primary: $primary;
+  success: $success;
+  danger: $danger;
+  warning: $warning;
+  info: $info;
+  searchButtonColor: $searchButtonColor;
+}

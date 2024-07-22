@@ -8,7 +8,7 @@
  * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012
  */
 
-import { useUserStore } from '/@/store/modules/system/user';
+import { useUserStore } from '../store/modules/system/user';
 import { DirectiveBinding } from 'vue';
 import lodash from 'lodash';
 

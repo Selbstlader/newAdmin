@@ -23,7 +23,7 @@
 </template>
 <script setup lang="ts">
   import { MENU_TYPE_ENUM } from '/@/constants/system/menu-const';
-  import { useRoleStore } from '/@/store/modules/system/role';
+  import { useRoleStore } from '../../../../../../store/modules/system/role';
   import RoleTreePoint from './role-tree-point.vue';
   import RoleTreeMenu from '../role-tree/role-tree-menu.vue';
 

@@ -8,7 +8,7 @@
  */
 import { MenuVo } from '/@/api/system/menu/model/menu-vo';
 import { MenuTreeVo } from '@/api/system/login/login-model.ts';
-import { UserTagNav } from '/@/store/modules/model/UserTagNav';
+import { UserTagNav } from '/@/store/model/UserTagNav';
 import { LoginResultVo } from '/@/api/system/login/model/login-result-vo';
 
 export interface UserState {

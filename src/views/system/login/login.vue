@@ -70,7 +70,7 @@
   import { loginApi } from '/@/api/system/login/login-api';
   import { SmartLoading } from '/@/components/framework/smart-loading';
   import { LOGIN_DEVICE_ENUM } from '/@/constants/system/login-device-const';
-  import { useUserStore } from '/@/store/modules/system/user';
+  import { useUserStore } from '../../../store/modules/system/user';
   import loginQR from '/@/assets/images/login/login-qr.png';
   import leftBg2 from '/@/assets/images/login/left-bg2.png';
   import wechatIcon from '/@/assets/images/login/wechat-icon.png';

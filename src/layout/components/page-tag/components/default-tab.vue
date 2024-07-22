@@ -54,7 +54,7 @@
   import { useRoute, useRouter } from 'vue-router';
   import { HOME_PAGE_NAME } from '/@/constants/system/home-const';
   import { useAppConfigStore } from '/@/store/modules/system/app-config';
-  import { useUserStore } from '/@/store/modules/system/user';
+  import { useUserStore } from '../../../../store/modules/system/user';
   import { theme } from 'ant-design-vue';
 
   //标签页 是否显示

@@ -45,7 +45,7 @@
   import { computed, ref, watch } from 'vue';
   import { message } from 'ant-design-vue';
   import { fileApi } from '/@/api/support/file/file-api';
-  import { useUserStore } from '/@/store/modules/system/user';
+  import { useUserStore } from '../../../store/modules/system/user';
   import { SmartLoading } from '/@/components/framework/smart-loading';
   import { FILE_FOLDER_TYPE_ENUM } from '/@/constants/support/file-const';
   import { download } from '/@/lib/axios';

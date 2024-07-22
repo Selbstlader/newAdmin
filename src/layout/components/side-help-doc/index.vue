@@ -62,7 +62,7 @@
   import { helpDocApi } from '/@/api/support/help-doc/help-doc-api';
   import ContactModal from './components/contact-modal.vue';
   import FeedbackModal from './components/feedback-modal.vue';
-  import { useAppConfigStore } from '/@/store/modules/system/app-config';
+  import { useAppConfigStore } from '../../../store/modules/system/app-config';
   import { feedbackApi } from '/@/api/support/feedback/feedback-api';
 import { smartSentry } from '/@/lib/smart-sentry';
 

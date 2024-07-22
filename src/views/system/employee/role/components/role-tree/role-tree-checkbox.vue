@@ -23,7 +23,7 @@
 </template>
 <script setup lang="ts">
   import { ref, watch } from 'vue';
-  import { useRoleStore } from '/@/store/modules/system/role';
+  import { useRoleStore } from '../../../../../../store/modules/system/role';
   import RoleTreeMenu from '../role-tree/role-tree-menu.vue';
 
   let props = defineProps({

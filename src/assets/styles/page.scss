@@ -1,0 +1,103 @@
+/* #region *************************************************************** table页面 ******************************************************************  */
+// table页面样式
+.table_page {
+    height: 100%;
+    width: 100%;
+    padding: $mainPadding;
+    background: $mainBg;
+}
+
+/* #endregion */
+
+/* #region *************************************************************** 颜色 ******************************************************************  */
+.searchButton {
+    background: $searchButton;
+    color: $searchButtonColor;
+}
+
+.searchColor {
+    color: $searchButtonColor;
+}
+.successColor {
+  color: $success;
+}
+.dangerColor {
+  color: $danger;
+}
+.whiteColor {
+    color: #FFFFFF;
+  }
+
+.cursor_p {
+  cursor: pointer;
+}
+/* #endregion */
+
+/* #region *************************************************************** 字体 ******************************************************************  */
+.smallFont {
+    font-size: $smallFontSize;
+}
+.largeFont {
+  font-size: 24px;
+}
+/* #endregion */
+
+/* #region ******************************* 布局 ************************************* */
+.margin-l6 {
+    margin-left: 6px;
+  }
+  .margin-r6 {
+    margin-right: 6px;
+  }
+  .margin-t6 {
+    margin-top: 6px;
+  }
+  .margin-b6 {
+    margin-bottom: 6px;
+  }
+  .padding-l6 {
+    padding-left: 6px;
+    box-sizing: border-box;
+  }
+  .padding-r6 {
+    padding-right: 6px;
+    box-sizing: border-box;
+  }
+  
+  .margin-l12 {
+    margin-left: 12px;
+  }
+  .margin-r12 {
+    margin-right: 12px;
+  }
+  .margin-t12 {
+    margin-top: 12px;
+  }
+  .padding-l12 {
+    padding-left: 12px;
+    box-sizing: border-box;
+  }
+  .padding-r12 {
+    padding-right: 12px;
+    box-sizing: border-box;
+  }
+  
+  .margin-l24 {
+    margin-left: 24px;
+  }
+  .margin-r24 {
+    margin-right: 24px;
+  }
+  
+  .margin-t24 {
+    margin-top: 24px;
+  }
+  .padding-l24 {
+    padding-left: 24px;
+    box-sizing: border-box;
+  }
+  .padding-r24 {
+    padding-right: 24px;
+    box-sizing: border-box;
+  }
+  /* #endregion */

@@ -39,8 +39,8 @@ import { computed, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import SubMenu from './sub-menu.vue';
 import { router } from '/@/router/index';
-import { useAppConfigStore } from '/@/store/modules/system/app-config';
-import { useUserStore } from '/@/store/modules/system/user';
+import { useAppConfigStore } from '../../../store/modules/system/app-config';
+import { useUserStore } from '../../../store/modules/system/user';
 
 const theme = computed(() => useAppConfigStore().$state.sideMenuTheme);
 

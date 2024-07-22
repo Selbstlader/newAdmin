@@ -1,0 +1,196 @@
+
+/* #region *************************************************************** root ******************************************************************  */
+:root {
+  --vh100: 100vh;
+  --width100: 100%;
+  --sideBarWidth: 230px;
+  // 颜色
+  --success: #67C23A;
+  --primary: #3370ff;
+  --danger: #EA0000;
+  --warning: #FF6600;
+  --info: #909399;
+  --title: #3970e3;
+  --colorCars: #FDC200;
+  --colorWhite: #fff;
+  --searchButton: #CDE1FF;
+  --searchButtonColor: #4772B3
+}
+/* #endregion */
+
+/* #region *************************************************************** 浅色 ******************************************************************  */
+body {
+  --mainBg: #e4ecf4;                                           // 主要内容背景色
+  --topBg: #367EF1;                                            // 顶部条背景颜色
+  --menuHover: #e8ebf0;                                             // 侧边栏hover背景
+  // 字体颜色
+  --mainFontColor: #333333;                                     // 主要字体颜色
+  --cjFontColor: #666666;                                       // 次要字体颜色
+  --labelFontColor: #B2B7BE;                                    // 标签字体颜色
+  // vxeTable
+  --tableBg: #FFF;
+  --tableHeaderBg: #F0F6FF;
+  --searchBg: #FFF;                                             // 搜索框背景颜色
+  --searchBorder: #DCDCDC;                                      // 搜索框边框颜色
+  // sideBar
+  --sideBarBg: #FFF;
+  --subMenuAct: #367EF1;
+  --subMenuHover: #E1ECFF;
+  // form
+  --formTitleBg: #FFF;
+  --formBodyBg: #FFF;
+  --formFooterBg: #FFF;
+  --inputBg: #FFF;
+  --inputBorder: 1px solid #DCDCDC;
+  --inputDisabled: #EEEEEE;
+}
+/* #endregion */
+
+/* #region *************************************************************** 深色 ******************************************************************  */
+body.dark {
+  --mainBg: #080b12;                                        // 主体背景色
+  --topBg: #367EF1;                                            // 顶部条背景颜色
+  --menuHover: #e8ebf0;                                             // 侧边栏hover背景
+  // 字体颜色
+  --mainFontColor: #333333;                                     // 主要字体颜色
+  --cjFontColor: #666666;                                       // 次要字体颜色
+  --labelFontColor: #B2B7BE;                                    // 标签字体颜色
+  // vxeTable
+  --tableBg: #1c1d2f;
+  --tableHeaderBg: #F0F6FF;
+  --searchBg: #FFF;                                             // 搜索框背景颜色
+  --searchBorder: #DCDCDC;                                      // 搜索框边框颜色
+  // sideBar
+  --sideBarBg: #FFF;
+  --subMenuAct: #367EF1;
+  --subMenuHover: #E1ECFF;
+  // form
+  --formTitleBg: #FFF;
+  --formBodyBg: #FFF;
+  --formFooterBg: #FFF;
+  --inputBg: #FFF;
+  --inputBorder: 1px solid #DCDCDC;
+  --inputDisabled: #8C8C8C;
+}
+/* #endregion */
+
+
+/* #region *************************************************************** 颜色导出 ******************************************************************  */
+// 颜色
+$mainBg: var(--mainBg);
+$topBg: var(--topBg);
+$menuHover: var(--menuHover);
+// 字体颜色
+$mainFontColor: var(--mainFontColor);
+$cjFontColor: var(--cjFontColor);
+$labelFontColor: var(--labelFontColor);
+// vxeTable
+$tableBg: var(--tableBg);
+$tableHeaderBg: var(--tableHeaderBg);
+$searchBg: var(--searchBg);
+$searchBorder: var(--searchBorder);
+
+// sideBar
+$sideBarBg: var(--sideBarBg);
+$subMenuAct: var(--subMenuAct);
+$subMenuHover: var(--subMenuHover);
+
+// form
+$formTitleBg: var(--formTitleBg);
+$formBodyBg: var(--formBodyBg);
+$formFooterBg: var(--formFooterBg);
+$inputBg: var(--inputBg);
+$inputBorder: var(--inputBorder);
+$inputDisabled: var(--inputDisabled);
+
+
+
+/* #endregion */
+
+/* #region *************************************************************** 字体/圆角/padding ******************************************************************  */
+// 字体大小
+$mainFontSize: 16px;
+$smallFontSize: $mainFontSize - 2px;
+$miniFontSize: $mainFontSize - 4px;
+// 圆角
+$largeRadius: 10px;
+$mainRadius: 6px;
+$smallRadius: 4px;
+
+//padding
+$formPadding: 20px;
+$largePadding: 20px;
+$mainPadding:  16px;
+$smallPadding: 14px;
+$miniPadding:  10px;
+/* #endregion */
+
+/* #region *************************************************************** 颜色 ******************************************************************  */
+// 颜色
+$success: var(--success);
+$primary: var(--primary);
+$danger: var(--danger);
+$warning: var(--warning);
+$info: var(--info);
+$title: var(--title);
+$colorCars: var(--colorCars);
+$lightgrey: var(--lightgrey);
+$searchButton: var(--searchButton);
+$searchButtonColor: var(--searchButtonColor);
+
+/* #endregion */
+
+/* #region *************************************************************** ruoyi ******************************************************************  */
+// base color
+$blue: #324157;
+$light-blue: #3A71A8;
+$red: #C03639;
+$pink: #E65D6E;
+$green: #30B08F;
+$tiffany: #4AB7BD;
+$yellow: #FEC171;
+$panGreen: #30B08F;
+
+// 默认菜单主题风格
+$base-menu-color: #bfcbd9;
+$base-menu-color-active: #f4f4f5;
+$base-menu-background: #304156;
+$base-logo-title-color: #ffffff;
+
+$base-menu-light-color: rgba(0, 0, 0, 0.7);
+$base-menu-light-background: #ffffff;
+$base-logo-light-title-color: #001529;
+
+$base-sub-menu-background: #1f2d3d;
+$base-sub-menu-hover: #001528;
+
+
+$--color-primary: #409EFF;
+$--color-success: #67C23A;
+$--color-warning: #E6A23C;
+$--color-danger: #F56C6C;
+$--color-info: #909399;
+
+$base-sidebar-width: 200px;
+
+/* #endregion */
+
+// the :export directive is the magic sauce for webpack
+// https://www.bluematador.com/blog/how-to-share-variables-between-js-and-sass
+:export {
+  menuColor: $base-menu-color;
+  menuLightColor: $base-menu-light-color;
+  menuColorActive: $base-menu-color-active;
+  menuBackground: $base-menu-background;
+  menuLightBackground: $base-menu-light-background;
+  subMenuBackground: $base-sub-menu-background;
+  subMenuHover: $base-sub-menu-hover;
+  sideBarWidth: $base-sidebar-width;
+  logoTitleColor: $base-logo-title-color;
+  logoLightTitleColor: $base-logo-light-title-color;
+  primaryColor: $--color-primary;
+  successColor: $--color-success;
+  dangerColor: $--color-danger;
+  infoColor: $--color-info;
+  warningColor: $--color-warning;
+}

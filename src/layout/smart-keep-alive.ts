@@ -9,7 +9,7 @@
  */
 import { computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import { useUserStore } from '/@/store/modules/system/user';
+import { useUserStore } from '../store/modules/system/user';
 
 export function smartKeepAlive() {
   const route = useRoute();

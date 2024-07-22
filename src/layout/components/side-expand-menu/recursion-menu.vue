@@ -39,7 +39,7 @@
   import { router } from '/@/router';
   import SubMenu from './sub-menu.vue';
   import { HOME_PAGE_NAME } from '/@/constants/system/home-const';
-  import { useUserStore } from '/@/store/modules/system/user';
+  import { useUserStore } from '../../../store/modules/system/user';
   import _ from 'lodash';
 
   let props = defineProps({

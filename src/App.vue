@@ -22,7 +22,7 @@
 import dayjs from 'dayjs';
 import { computed, ComputedRef } from 'vue';
 import { messages } from '/@/i18n/index';
-import { useAppConfigStore } from '/@/store/modules/system/app-config';
+import { useAppConfigStore } from './store/modules/system/app-config';
 import { useSpinStore } from './store/modules/system/spin';
 import { LanguageType } from '/@/types/config';
 import SmartLayout from '/@/layout/index.vue';

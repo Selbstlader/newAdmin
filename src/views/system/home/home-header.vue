@@ -41,7 +41,7 @@
 </template>
 <script setup lang="ts">
   import { computed } from 'vue';
-  import { useUserStore } from '/@/store/modules/system/user';
+  import { useUserStore } from '../../../store/modules/system/user';
   import uaparser from 'ua-parser-js';
   import { Solar, Lunar } from 'lunar-javascript';
   import _ from 'lodash';

@@ -47,7 +47,7 @@
   import HeaderAvatar from './header-avatar.vue';
   import HeaderSetting from './header-setting.vue';
   import HeaderMessage from './header-message.vue';
-  import { useAppConfigStore } from '/@/store/modules/system/app-config';
+  import { useAppConfigStore } from '../../../store/modules/system/app-config';
   import { ref } from 'vue';
 
   // 设置
