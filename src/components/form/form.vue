@@ -989,7 +989,7 @@ const props = defineProps({
   zlvalue: { type: Object, default: {} }, // 表格数据
   menuData: { type: Array, default: [] }, // 待切换的表格
   width: { type: Number, default: 500 }, // 表格宽度
-  labelWidth: { type: String, default: '90px' }, // label的长度
+  labelWidth: { type: String, default: '85px' }, // label的长度
   rowGutter: { type: Number, default: 24 }, // 行的宽度
   formPadding: { type: String, default: variables.formPadding }, // 表单行的Padding
   checkMenu: { type: Boolean, default: false },

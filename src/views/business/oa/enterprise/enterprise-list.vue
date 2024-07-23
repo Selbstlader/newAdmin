@@ -36,6 +36,8 @@ import { roleList } from '/@/views/system/employee/role/model';
 // import * as Utils from '/@/utils';
 const state = reactive({
   tableConfig: new Table.ZlVXETable('index', 'roleIndex')
+    .createColumns('', '', '20', { type: 'checkbox', fixed: 'left' })
+    .createColumns('index', '序号', '60')
     .createColumns('enterpriseName', '企业名称', '180', { searchType: 'input' })
     .createColumns('unifiedSocialCreditCode', '统一社会信用代码', '170')
     .createColumns('type', '企业类型', '100')

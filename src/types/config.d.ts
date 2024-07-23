@@ -59,4 +59,10 @@ export interface AppConfig {
   primaryColor: string;
   // 紧凑
   compactFlag: boolean;
+  // 全局颜色
+  success: string,
+  primary: string,
+  warning: string,
+  danger: string,
+  info: string,
 }

@@ -46,4 +46,10 @@ export const appDefaultConfig: AppConfig = {
   primaryColor: '#1677ff',
   // 紧凑
   compactFlag: false,
+  // 全局颜色
+  success: "#11AA66",
+  primary: '#2882E8',
+  warning: '##F29F1F',
+  danger: "#F8365C",
+  info: " #C7CCD6",
 };

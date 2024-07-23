@@ -17,94 +17,97 @@
       <slot></slot>
     </div>
     <!-- 标签或按钮模式 -->
-    <el-badge v-if="getTagType == 'tag' || getTagType == 'button'" :hidden="getBadge" :value="props.badgeValue"
-      class="item">
-      <div :class="{
-        default: props.size == 'default' && !props.icon,
-        defaultIcon: props.size == 'default' && props.icon,
-        small: props.size == 'small' && !props.icon,
-        smallIcon: props.size == 'small' && props.icon,
-        mini: props.size == 'mini' && !props.icon,
-        miniIcon: props.size == 'mini' && props.icon,
+    <el-badge v-if="getTagType == 'tag' || getTagType == 'button'" :hidden="getBadge" :value="props.badgeValue" class="item">
+      <div
+        :class="{
+          default: props.size == 'default' && !props.icon,
+          defaultIcon: props.size == 'default' && props.icon,
+          small: props.size == 'small' && !props.icon,
+          smallIcon: props.size == 'small' && props.icon,
+          mini: props.size == 'mini' && !props.icon,
+          miniIcon: props.size == 'mini' && props.icon,
 
-        searchButton: props.type == 'search' && props.effect == 'light' && !props.disabled,
-        searchButtonHovert: getTagType == 'button' && props.type == 'search' && props.effect == 'light',
-      
-        success: props.type == 'success' && props.effect == 'dark' && !props.disabled,
-        warning: props.type == 'warning' && props.effect == 'dark' && !props.disabled,
-        danger: props.type == 'danger' && props.effect == 'dark' && !props.disabled,
-        info: props.type == 'info' && props.effect == 'dark' && !props.disabled,
-        primary: props.type == 'primary' && props.effect == 'dark' && !props.disabled,
-        successDisabled: props.type == 'success' && props.effect == 'dark' && props.disabled,
-        warningDisabled: props.type == 'warning' && props.effect == 'dark' && props.disabled,
-        dangerDisabled: props.type == 'danger' && props.effect == 'dark' && props.disabled,
-        infoDisabled: props.type == 'info' && props.effect == 'dark' && props.disabled,
-        primaryDisabled: props.type == 'primary' && props.effect == 'dark' && props.disabled,
-        primaryHover: getTagType == 'button' && props.type == 'primary' && props.effect == 'dark',
-        warningHover: getTagType == 'button' && props.type == 'warning' && props.effect == 'dark',
-        dangerHover: getTagType == 'button' && props.type == 'danger' && props.effect == 'dark',
-        infoHover: getTagType == 'button' && props.type == 'info' && props.effect == 'dark',
-        successHover: getTagType == 'button' && props.type == 'success' && props.effect == 'dark',
-        primarySelect: getTagType == 'button' && props.type == 'primary' && props.effect == 'dark' && props.select,
-        warningSelect: getTagType == 'button' && props.type == 'warning' && props.effect == 'dark' && props.select,
-        dangerSelect: getTagType == 'button' && props.type == 'danger' && props.effect == 'dark' && props.select,
-        infoSelect: getTagType == 'button' && props.type == 'info' && props.effect == 'dark' && props.select,
-        successSelect: getTagType == 'button' && props.type == 'success' && props.effect == 'dark' && props.select,
-      
-        successLight: props.type == 'success' && props.effect == 'light' && !props.disabled,
-        warningLight: props.type == 'warning' && props.effect == 'light' && !props.disabled,
-        dangerLight: props.type == 'danger' && props.effect == 'light' && !props.disabled,
-        infoLight: props.type == 'info' && props.effect == 'light' && !props.disabled,
-        primaryLight: props.type == 'primary' && props.effect == 'light' && !props.disabled,
-        successLightDisabled: props.type == 'success' && props.effect == 'light' && props.disabled,
-        warningLightDisabled: props.type == 'warning' && props.effect == 'light' && props.disabled,
-        dangerLightDisabled: props.type == 'danger' && props.effect == 'light' && props.disabled,
-        infoLightDisabled: props.type == 'info' && props.effect == 'light' && props.disabled,
-        primaryLightDisabled: props.type == 'primary' && props.effect == 'light' && props.disabled,
-        primaryLightHover: getTagType == 'button' && props.type == 'primary' && props.effect == 'light',
-        warningLightHover: getTagType == 'button' && props.type == 'warning' && props.effect == 'light',
-        dangerLightHover: getTagType == 'button' && props.type == 'danger' && props.effect == 'light',
-        infoLightHover: getTagType == 'button' && props.type == 'info' && props.effect == 'light',
-        successLightHovert: getTagType == 'button' && props.type == 'success' && props.effect == 'light',
-        round: props.round,
-        disabled: props.disabled
-      }">
+          searchButton: props.type == 'search' && props.effect == 'light' && !props.disabled,
+          searchButtonHovert: getTagType == 'button' && props.type == 'search' && props.effect == 'light',
 
+          success: props.type == 'success' && props.effect == 'dark' && !props.disabled,
+          warning: props.type == 'warning' && props.effect == 'dark' && !props.disabled,
+          danger: props.type == 'danger' && props.effect == 'dark' && !props.disabled,
+          info: props.type == 'info' && props.effect == 'dark' && !props.disabled,
+          primary: props.type == 'primary' && props.effect == 'dark' && !props.disabled,
+          successDisabled: props.type == 'success' && props.effect == 'dark' && props.disabled,
+          warningDisabled: props.type == 'warning' && props.effect == 'dark' && props.disabled,
+          dangerDisabled: props.type == 'danger' && props.effect == 'dark' && props.disabled,
+          infoDisabled: props.type == 'info' && props.effect == 'dark' && props.disabled,
+          primaryDisabled: props.type == 'primary' && props.effect == 'dark' && props.disabled,
+          primaryHover: getTagType == 'button' && props.type == 'primary' && props.effect == 'dark',
+          warningHover: getTagType == 'button' && props.type == 'warning' && props.effect == 'dark',
+          dangerHover: getTagType == 'button' && props.type == 'danger' && props.effect == 'dark',
+          infoHover: getTagType == 'button' && props.type == 'info' && props.effect == 'dark',
+          successHover: getTagType == 'button' && props.type == 'success' && props.effect == 'dark',
+          primarySelect: getTagType == 'button' && props.type == 'primary' && props.effect == 'dark' && props.select,
+          warningSelect: getTagType == 'button' && props.type == 'warning' && props.effect == 'dark' && props.select,
+          dangerSelect: getTagType == 'button' && props.type == 'danger' && props.effect == 'dark' && props.select,
+          infoSelect: getTagType == 'button' && props.type == 'info' && props.effect == 'dark' && props.select,
+          successSelect: getTagType == 'button' && props.type == 'success' && props.effect == 'dark' && props.select,
+
+          successLight: props.type == 'success' && props.effect == 'light' && !props.disabled,
+          warningLight: props.type == 'warning' && props.effect == 'light' && !props.disabled,
+          dangerLight: props.type == 'danger' && props.effect == 'light' && !props.disabled,
+          infoLight: props.type == 'info' && props.effect == 'light' && !props.disabled,
+          primaryLight: props.type == 'primary' && props.effect == 'light' && !props.disabled,
+          successLightDisabled: props.type == 'success' && props.effect == 'light' && props.disabled,
+          warningLightDisabled: props.type == 'warning' && props.effect == 'light' && props.disabled,
+          dangerLightDisabled: props.type == 'danger' && props.effect == 'light' && props.disabled,
+          infoLightDisabled: props.type == 'info' && props.effect == 'light' && props.disabled,
+          primaryLightDisabled: props.type == 'primary' && props.effect == 'light' && props.disabled,
+          primaryLightHover: getTagType == 'button' && props.type == 'primary' && props.effect == 'light',
+          warningLightHover: getTagType == 'button' && props.type == 'warning' && props.effect == 'light',
+          dangerLightHover: getTagType == 'button' && props.type == 'danger' && props.effect == 'light',
+          infoLightHover: getTagType == 'button' && props.type == 'info' && props.effect == 'light',
+          successLightHovert: getTagType == 'button' && props.type == 'success' && props.effect == 'light',
+          round: props.round,
+          disabled: props.disabled,
+        }"
+      >
         <div :class="{ tagSearchBox: true, disabled: props.disabled }">
           <slot></slot>
           <span v-if="getValue" class="tagSearchBox_value">{{ props.badgeValue }}</span>
         </div>
-
       </div>
     </el-badge>
     <!-- 卡片模式 -->
     <el-badge v-if="getTagType == 'tagCard'" :hidden="getBadge" :value="props.badgeValue" class="item">
-      <div :style="`background-color: ${getColor}`" :class="{
-        border: true,
-        default: props.size == 'default',
-        small: props.size == 'small',
-        round: props.round
-      }">
+      <div
+        :style="`background-color: ${getColor}`"
+        :class="{
+          border: true,
+          default: props.size == 'default',
+          small: props.size == 'small',
+          round: props.round,
+        }"
+      >
         <slot></slot>
       </div>
       <!-- 快捷搜索模式 -->
-      <div v-if="getTagType == 'tagSearch'" :class="{
-        default: props.size == 'default',
-        small: props.size == 'small',
-        mini: props.size == 'mini',
-        success: props.type == 'success',
-        warning: props.type == 'warning',
-        danger: props.type == 'danger',
-        info: props.type == 'info',
-        primary: props.type == 'primary',
-        round: props.round
-      }">
-
+      <div
+        v-if="getTagType == 'tagSearch'"
+        :class="{
+          default: props.size == 'default',
+          small: props.size == 'small',
+          mini: props.size == 'mini',
+          success: props.type == 'success',
+          warning: props.type == 'warning',
+          danger: props.type == 'danger',
+          info: props.type == 'info',
+          primary: props.type == 'primary',
+          round: props.round,
+        }"
+      >
         <div class="tagSearchBox">
           <slot></slot>
           <span v-if="getValue" class="tagSearchBox_value">{{ props.badgeValue }}</span>
         </div>
-
       </div>
     </el-badge>
   </div>
@@ -112,124 +115,135 @@
 <script lang="ts" setup>
 import { computed } from 'vue';
 import variables from '/@/assets/styles/export.module.scss'
-
+import { appDefaultConfig } from '/@/config/app-config';
 const props = defineProps({
-  tagType: { // 类型
+  tagType: {
+    // 类型
     type: String,
     default: () => 'dot',
   },
-  type: { // 颜色类型
+  type: {
+    // 颜色类型
     type: String,
     default: () => 'primary',
   },
-  color: { // 颜色
+  color: {
+    // 颜色
     type: String,
-    default: () => ''
+    default: () => '',
   },
-  round: { // 是否圆角
+  round: {
+    // 是否圆角
     type: Boolean,
     default: () => false,
   },
-  select: { // 是否选择模式
+  select: {
+    // 是否选择模式
     type: Boolean,
-    default: () => false
+    default: () => false,
   },
-  size: { // 大小
+  size: {
+    // 大小
     type: String,
-    default: () => 'default'
+    default: () => 'default',
   },
-  badgeValue: { // 气泡值
+  badgeValue: {
+    // 气泡值
     type: Number,
-    default: () => 0
+    default: () => 0,
   },
-  showBadge: { // 是否显示气泡
+  showBadge: {
+    // 是否显示气泡
     type: Boolean,
-    default: () => false
+    default: () => false,
   },
-  showValue: { // 是否显示内部的气泡数字
+  showValue: {
+    // 是否显示内部的气泡数字
     type: Boolean,
-    default: () => false
+    default: () => false,
   },
-  showZero: { // 是否显示0
+  showZero: {
+    // 是否显示0
     type: Boolean,
-    default: () => false
+    default: () => false,
   },
-  effect: { // 颜色模式
+  effect: {
+    // 颜色模式
     type: String,
-    default: () => 'dark'
+    default: () => 'dark',
   },
-  disabled: { // 是否禁用
+  disabled: {
+    // 是否禁用
     type: Boolean,
-    default: () => false
+    default: () => false,
   },
-  icon: { // 图标
+  icon: {
+    // 图标
     type: Boolean,
-    default: () => false
-  }
-})
-
-
+    default: () => false,
+  },
+});
 
 // 默认颜色
 const colors: any = {
-  primary: '#3370ff',
-  success: '#67c23a',
-  warning: '#e6a23c',
-  danger: '#f56c6c',
-  info: '#909399'
-}
+  primary: appDefaultConfig.primary,
+  success: appDefaultConfig.success,
+  warning: appDefaultConfig.warning,
+  danger: appDefaultConfig.danger,
+  info: appDefaultConfig.info,
+};
 
 // 设置显示气泡
 const getBadge = computed<any>(() => {
-  let res = false
-  if (props.showBadge) { // 显示气泡，将Hidden设为false
+  let res = false;
+  if (props.showBadge) {
+    // 显示气泡，将Hidden设为false
     if (props.badgeValue > 0) {
-      res = true
+      res = true;
     } else if (props.showZero) {
-      res = true
+      res = true;
     }
   } else {
-    res = false
+    res = false;
   }
-  return !res
-})
+  return !res;
+});
 
 // 设置后面的数字
 const getValue = computed<any>(() => {
-  let res = false
-  if (props.showValue) { // 显示气泡，将Hidden设为false
+  let res = false;
+  if (props.showValue) {
+    // 显示气泡，将Hidden设为false
     if (props.badgeValue > 0) {
-      res = true
+      res = true;
     } else if (props.showZero) {
-      res = true
+      res = true;
     }
   } else {
-    res = false
+    res = false;
   }
-  return res
-})
+  return res;
+});
 
 // 设置颜色
 const getColor = computed<any>(() => {
-  let type = props.type ? props.type : 'primary'
-  if (props.color) return props.color
-  if (variables[type]) return variables[type]
-  return colors[type]
-})
-
+  let type = props.type ? props.type : 'primary';
+  if (props.color) return props.color;
+  if (variables[type]) return variables[type];
+  return colors[type];
+});
 
 // 设置标签类型
 const getTagType = computed<any>(() => {
-  return props.tagType ? props.tagType : 'dot'
-})
+  return props.tagType ? props.tagType : 'dot';
+});
 
 // 获取大小
 const getSize = computed<any>(() => {
-  let size = 'default'
-  if (props.size == 'small') size = 'small'
-  return size
-})
-
+  let size = 'default';
+  if (props.size == 'small') size = 'small';
+  return size;
+});
 </script>
 <style lang="scss" scoped>
 .zltag_box {
@@ -245,7 +259,6 @@ const getSize = computed<any>(() => {
     justify-content: center;
   }
 
-
   .zltag_dot {
     height: 8px;
     width: 8px;
@@ -257,7 +270,6 @@ const getSize = computed<any>(() => {
     margin-right: 5px;
   }
 }
-
 
 .searchSelect {
   cursor: pointer;
@@ -456,50 +468,50 @@ const getSize = computed<any>(() => {
 .tagSearchBox {
   display: flex;
   align-items: center;
-  white-space:nowrap;
+  white-space: nowrap;
 
   .tagSearchBox_value {
     padding-left: 6px;
     padding-top: 2px;
     box-sizing: border-box;
-    color: #FF8F1F;
+    color: #ff8f1f;
   }
 }
 
 .successLight {
   background: #67c23a;
   border: #67c23a;
-  color: #FFF;
+  color: #fff;
 }
 
 .primaryLight {
   background: #3370ff;
   border: #3370ff;
-  color: #FFF;
+  color: #fff;
 }
 
 .dangerLight {
   background: #f56c6c;
   border: #f56c6c;
-  color: #FFF;
+  color: #fff;
 }
 
 .warningLight {
   background: #e6a23c;
   border: #e6a23c;
-  color: #FFF;
+  color: #fff;
 }
 
 .infoLight {
   background: #909399;
   border: #909399;
-  color: #FFF;
+  color: #fff;
 }
 
 .successLightDisabled {
   background: #3e6b27;
   border: #3e6b27;
-  color: rgba(255, 255, 255, .5);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .successDisabled {
@@ -511,7 +523,7 @@ const getSize = computed<any>(() => {
 .primaryLightDisabled {
   background: #2a598a;
   border: #2a598a;
-  color: rgba(255, 255, 255, .5);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .primaryDisabled {
@@ -523,7 +535,7 @@ const getSize = computed<any>(() => {
 .dangerLightDisabled {
   background: #854040;
   border: #854040;
-  color: rgba(255, 255, 255, .5);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .dangerDisabled {
@@ -535,7 +547,7 @@ const getSize = computed<any>(() => {
 .warningLightDisabled {
   background: #7d5b28;
   border: #7d5b28;
-  color: rgba(255, 255, 255, .5);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .warningDisabled {
@@ -547,7 +559,7 @@ const getSize = computed<any>(() => {
 .infoLightDisabled {
   background: #525457;
   border: #525457;
-  color: rgba(255, 255, 255, .5);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .infoDisabled {

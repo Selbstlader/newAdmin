@@ -28,7 +28,6 @@ const state = reactive({
   // 新增/编辑
   form: new RoleForm()
     .createColumns('enterpriseName', '企业名称', 'input', '无内容', { span: 24, rule: true, autosize: { minRows: 3 } })
-
     .createColumns('logo', ' 企业logo', 'ZlSingleUpload', '企业logo', { span: 24, rule: true })
     .createColumns('type', '企业类型', 'select', '企业类型', {
       span: 24,

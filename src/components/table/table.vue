@@ -252,9 +252,10 @@
       <div v-if="props.topPosition && table.unfold" class="zl_vxe_bottom_cover" @click="bindClickTopCover"></div>
       <div v-if="props.showTable && table.showTable" class="table_box">
         <vxe-grid
+          class="zl_vxe_table_box"
           ref="xGrid2"
           height="100%"
-          border="inner"
+          :border="true"
           v-bind="gridOptions2"
           :loading="table.loading"
           stripe
@@ -1303,7 +1304,7 @@ defineExpose({
             display: flex;
             align-items: center;
             .z_header_input_label {
-              width: 100px;
+              width: 85px;
               display: flex;
               margin-right: $smallPadding;
               align-items: center;
@@ -1367,7 +1368,7 @@ defineExpose({
     display: flex;
     align-items: center;
     justify-content: space-between;
-
+    margin: 0 16px;
     .zl_top_l {
       display: flex;
       .top_l_one {
