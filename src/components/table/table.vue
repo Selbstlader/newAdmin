@@ -716,8 +716,6 @@ const searchOld = ref({} as any);
 // checkbox全部的数量
 const checkboxNumber = ref({} as any);
 const getHeader = () => {
-  // eslint-disable-next-line no-debugger
-  debugger;
   if (!props.zlvalue || !props.zlvalue.columns || !props.zlvalue.columns.length) return;
   props.zlvalue.columns.forEach((item: ZlVXETableColumn) => {
     if (item.searchType) {

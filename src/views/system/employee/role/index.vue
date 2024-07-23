@@ -13,7 +13,6 @@
 import { Table, ZlTag } from '/@/components';
 import { reactive, onMounted, toRefs } from 'vue';
 import { roleList, ShowRoleList } from './model';
-import * as Utils from '/@/utils';
 const state = reactive({
   tableConfig: new Table.ZlVXETable('index', 'traineesUsers')
     .createColumns('actualName', '岗位', '120', { searchType: 'select' })
@@ -27,7 +26,6 @@ const { table, tableConfig } = toRefs(state);
 onMounted(() => {
   state.table = new roleList();
   queryData();
-  // console.log(state.table);
 });
 // 获取list
 const queryData = async (params?: any, isReset?: boolean) => {

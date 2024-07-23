@@ -121,7 +121,6 @@ function onSubmit() {
         }
       })
       .catch((error) => {
-        debugger
         console.log('error', error);
         message.error('参数验证错误，请仔细填写表单数据!');
       });

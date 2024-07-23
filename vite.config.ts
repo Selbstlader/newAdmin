@@ -17,58 +17,59 @@ const pathResolve = (dir) => {
 
 export default defineConfig(({ mode, command }) => {
   const env = loadEnv(mode, process.cwd());
-    const { VITE_APP_ENV } = env;
- return{
-  base: process.env.NODE_ENV === 'production' ? '/manages/' : '/',
-  root: process.cwd(),
-  resolve: {
-    alias: [
-      // 国际化替换
-      {
-        find: 'vue-i18n',
-        replacement: 'vue-i18n/dist/vue-i18n.cjs.js',
-      },
-      // 绝对路径重命名：/@/xxxx => src/xxxx
-      {
-        find: /\/@\//,
-        replacement: pathResolve('src') + '/',
-      },
-      {
-        find: /^~/,
-        replacement: '',
-      },
-    ],
-  },
-  // 服务端渲染
-  server: {
-    host: '0.0.0.0',
-    port: 8080,
-  },
-  plugins: [createVitePlugins(env, command === 'build')],
-  optimizeDeps: {
-    include: ['ant-design-vue/es/locale/zh_CN', 'dayjs/locale/zh-cn', 'ant-design-vue/es/locale/en_US'],
-    exclude: ['vue-demi'],
-  },
-  build: {
-    brotliSize: false,
-    chunkSizeWarningLimit: 2000,
-  },
-  css: {
-    preprocessorOptions: {
-      less: {
-        modifyVars: {
-          hack: `true; @import (reference) "${resolve('src/theme/index.less')}";`,
+  const { VITE_APP_ENV } = env;
+  return {
+    base: process.env.NODE_ENV === 'production' ? '/manages/' : '/',
+    root: process.cwd(),
+    resolve: {
+      alias: [
+        // 国际化替换
+        {
+          find: 'vue-i18n',
+          replacement: 'vue-i18n/dist/vue-i18n.cjs.js',
         },
-        javascriptEnabled: true,
-      },
-      scss: {
-        additionalData: `@use "src/assets/styles/index.scss" as *;`
-    }
+        // 绝对路径重命名：/@/xxxx => src/xxxx
+        {
+          find: /\/@\//,
+          replacement: pathResolve('src') + '/',
+        },
+        {
+          find: /^~/,
+          replacement: '',
+        },
+      ],
     },
-  },
-  define: {
-    __INTLIFY_PROD_DEVTOOLS__: false,
-    'process.env': process.env,
-  },
- }
+    // 服务端渲染
+    server: {
+      host: '0.0.0.0',
+      port: 8080,
+    },
+    plugins: [createVitePlugins(env, command === 'build')],
+    optimizeDeps: {
+      include: ['ant-design-vue/es/locale/zh_CN', 'dayjs/locale/zh-cn', 'ant-design-vue/es/locale/en_US'],
+      exclude: ['vue-demi'],
+    },
+    build: {
+      brotliSize: false,
+      chunkSizeWarningLimit: 2000,
+    },
+    css: {
+      preprocessorOptions: {
+        less: {
+          modifyVars: {
+            hack: `true; @import (reference) "${resolve('src/theme/index.less')}";`,
+          },
+          javascriptEnabled: true,
+        },
+
+        scss: {
+          additionalData: `@use "src/assets/styles/index.scss" as *;`
+        }
+      },
+    },
+    define: {
+      __INTLIFY_PROD_DEVTOOLS__: false,
+      'process.env': process.env,
+    },
+  }
 });

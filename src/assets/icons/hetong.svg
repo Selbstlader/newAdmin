@@ -1,0 +1,23 @@
+<svg id="编组_8备份" data-name="编组 8备份" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="50" viewBox="0 0 50 50">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.144" y1="0.152" x2="0.887" y2="0.888" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ffe3a2"/>
+      <stop offset="1" stop-color="#ffba2f"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="0.927" x2="0.558" y2="0.858" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ffedca"/>
+      <stop offset="1" stop-color="#f5d58e"/>
+    </linearGradient>
+  </defs>
+  <g id="编组_3" data-name="编组 3">
+    <rect id="矩形" width="50" height="50" fill="none"/>
+    <rect id="矩形-2" data-name="矩形" width="50" height="50" rx="16.667" fill="url(#linear-gradient)"/>
+    <g id="编组_2" data-name="编组 2" transform="translate(11.207 10.345)">
+      <rect id="矩形备份" width="21.775" height="27.252" rx="2.271" transform="translate(5.476)" fill="url(#linear-gradient-2)"/>
+      <rect id="矩形-3" data-name="矩形" width="22.71" height="25.862" rx="2.271" transform="translate(0 2.885)" fill="#fff"/>
+      <path id="路径_4" data-name="路径 4" d="M0,1.135H4.542" transform="translate(4.542 8.095)" fill="none" stroke="#ffcd68" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2.271"/>
+      <path id="路径_4备份" data-name="路径 4备份" d="M0,1.135H9.084" transform="translate(4.542 15.375)" fill="none" stroke="#ffcd68" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2.271"/>
+      <path id="路径_4备份_2" data-name="路径 4备份 2" d="M0,.431H13.626" transform="translate(4.542 22.795)" fill="none" stroke="#ffcd68" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2.271"/>
+    </g>
+  </g>
+</svg>

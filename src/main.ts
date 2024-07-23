@@ -39,10 +39,19 @@ import 'element-plus/es/components/message/style/css';
 import 'element-plus/es/components/message-box/style/css';
 import 'element-plus/es/components/notification/style/css';
 import 'element-plus/es/components/loading/style/css';
+import 'element-plus/dist/index.css';
 // VXETable
 import VXETable from 'vxe-table'
 import VXETablePluginExportXLSX from 'vxe-table-plugin-export-xlsx'
 import 'vxe-table/lib/style.css'
+
+// svg图标
+import 'virtual:svg-icons-register';
+// import SvgIcon from '/@/components/SvgIcon/index.vue';
+// import svgIcon from './components/svgIcon.vue';
+// import elementIcons from '/@/components/SvgIcon/svgicon';
+
+import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 /*
  * -------------------- ※ 着重 解释说明下这里的初始化逻辑 begin ※ --------------------
  *
@@ -81,10 +90,10 @@ function initVue() {
     locale: zhCn,
     // 支持 large、default、small
     size: Cookies.get('size') || 'default',
-});
+  });
 
-app.use(VXETable)
-VXETable.use(VXETablePluginExportXLSX)
+  app.use(VXETable)
+  VXETable.use(VXETablePluginExportXLSX)
   //注入权限
   app.directive('privilege', {
     mounted(el, binding) {
@@ -95,6 +104,13 @@ VXETable.use(VXETablePluginExportXLSX)
   Object.keys(antIcons).forEach((key) => {
     app.component(key, antIcons[key]);
   });
+  // const app = createApp(App)
+  for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+    app.component(key, component)
+  }
+  // app.use(elementIcons);
+  // app.component('SvgIcon', SvgIcon);
+  // app.component('Svgicon', svgIcon);
   //全局
   app.config.globalProperties.$antIcons = antIcons;
   app.config.globalProperties.$lodash = lodash;

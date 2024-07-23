@@ -2,6 +2,8 @@ import * as Utils from '/@/utils';
 
 /* #region *************************************************************** 公用查询请求 ******************************************************************  */
 export class CommonReq {
+    protected pageNum: number = 1;                      //测试使用
+    protected enterpriseName?: string;                  //测试使用
     protected page: number = 1;                         // 页数
     protected pageSize: number = 10;                    // 页码
     protected tenantID?: number;                        // 租户编号
@@ -9,6 +11,7 @@ export class CommonReq {
     protected keyWord?: string;                         // 关键字
     protected roleName?: string;                         // 岗位
     protected remark?: string;                         // 备注
+
     protected orderByList?: ReqOrderByListItem[];       // 排序字段
     constructor(item: any, func?: any) {
         Utils.DataTools.NewMap.ConstructorObjDefault(this, item, func);

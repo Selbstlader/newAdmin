@@ -40,6 +40,7 @@
     "js-cookie": "^2.2.1",
     "jsencrypt": "^3.3.2",
     "lodash": "4.17.21",
+    "lodash.isequal": "^4.5.0",
     "lunar-javascript": "1.6.12",
     "mitt": "3.0.1",
     "nprogress": "0.2.0",
@@ -56,13 +57,15 @@
     "vue3-json-viewer": "2.2.2",
     "vue3-tabs-chrome": "^0.3.3",
     "vxe-table": "^4.7.57",
-    "vxe-table-plugin-export-xlsx": "^4.0.5"
+    "vxe-table-plugin-export-xlsx": "^4.0.5",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@types/crypto-js": "^4.2.2",
     "@types/lodash": "^4.14.186",
     "@types/nprogress": "^0.2.0",
     "@types/sortablejs": "^1.15.8",
+    "@types/xlsx": "^0.0.36",
     "@typescript-eslint/eslint-plugin": "^5.40.1",
     "@typescript-eslint/parser": "^5.40.1",
     "@vitejs/plugin-legacy": "5.4.1",
