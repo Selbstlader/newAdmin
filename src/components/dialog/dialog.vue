@@ -1,10 +1,11 @@
 <template>
   <div class="zlFormV2">
+    <content></content>
     <el-dialog
       v-model="dialogVisible"
       destroy-on-close
       :close-on-press-escape="props.canEsc"
-      :title="props?.zlvalue?.title"
+      :title="props.title"
       :close-on-click-modal="false"
       :width="props.width"
       :before-close="closeDialog"
@@ -36,7 +37,7 @@
               :loading="form.loading"
               :disabled="props.submitDisabled"
               type="primary"
-              @click="submitClick(formRef)"
+              @click="submitClick"
               >{{ props.submitContent }}</el-button
             >
           </div>
@@ -70,6 +71,7 @@ const props = withDefaults(defineProps<DialogProps>(), {
   sameDisabled: false, // 同，禁用
   deleteColor: '',
   permission: '',
+  title: '', //标题
 });
 // 数据
 const state = reactive({
@@ -91,15 +93,13 @@ const {
 } = toRefs(state);
 /* #region *************************************************************** 初始化 ******************************************************************  */
 // 监听是否打开表单
-// watch(
-//   () => props.visible,
-//   async (nl, ol) => {
-//     console.log(nl, 'newV');
-
-//     dialogVisible.value = nl;
-//   },
-//   { deep: true }
-// );
+watch(
+  () => props.visible,
+  async (nl, ol) => {
+    dialogVisible.value = nl;
+  },
+  { deep: true }
+);
 // 传出
 const emit = defineEmits(['close', 'change', 'submit', 'delete', 'checkMenu', 'changeMenu']);
 /** 关闭弹窗
@@ -135,17 +135,17 @@ const deleteClick = Utils.debounce(() => {
  */
 
 // 表单ref
-const formRef = ref<FormInstance>();
+// const formRef = ref<FormInstance>();
 const submitClick = Utils.debounce(async (formEl: FormInstance | undefined) => {
   if (!formEl) return;
   try {
-    await formEl.validate((valid: any, fields: any) => {
-      if (valid) {
-        emit('submit', state.form.formData);
-      } else {
-        console.log('error submit!', fields);
-      }
-    });
+    // await formEl.validate((valid: any, fields: any) => {
+    //   if (valid) {
+    emit('submit');
+    // } else {
+    //   console.log('error submit!', fields);
+    // }
+    // });
   } catch (error) {
     console.log('error', error);
   }
@@ -158,6 +158,10 @@ onMounted(() => {
 <style lang="scss" scoped>
 /*Dialog主题样式*/
 .zlFormV2 {
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 999;
   :deep(.el-dialog) {
     border-radius: 5px;
     // background: #262626 !important;
@@ -280,43 +284,6 @@ onMounted(() => {
     padding: $formPadding;
     box-sizing: border-box;
     border-radius: 0 0 5px 5px;
-  }
-
-  .zlFormV2_body_box {
-    padding: $formPadding;
-    box-sizing: border-box;
-    width: 100%;
-    height: auto;
-
-    .hidden {
-      height: 0 !important;
-      visibility: hidden !important;
-      display: none;
-    }
-
-    .inputstyle {
-      background: red;
-    }
-
-    .range_box {
-      width: 100%;
-      padding-bottom: $mainPadding $mainPadding 0 $mainPadding;
-      box-sizing: border-box;
-      flex-wrap: wrap;
-      display: flex;
-      justify-content: start;
-      position: relative;
-      .range_disabled {
-        width: 100%;
-        height: 100%;
-        left: 0;
-        top: 0;
-        z-index: 999;
-        position: absolute;
-        background: rgba($color: #000000, $alpha: 0);
-        cursor: not-allowed;
-      }
-    }
   }
 
   .zlFormV2_footer_box {

@@ -19,7 +19,9 @@ import { reactive, onMounted, toRefs, computed, watch, ref } from 'vue';
 import isEqual from 'lodash/isequal';
 // 组件
 import { Form } from '/@/components/index';
+// import Dialog from '/@/components/dialog/dialog.vue';
 import { RoleForm } from './module/roleForm';
+// import ZlUpload from '/@/utils/fileTools';
 /* #endregion */
 
 /* #region *************************************************************** 数据准备 ****************************************************************  */
@@ -28,6 +30,7 @@ const state = reactive({
   // 新增/编辑
   form: new RoleForm()
     .createColumns('enterpriseName', '企业名称', 'input', '无内容', { span: 24, rule: true, autosize: { minRows: 3 } })
+    .createColumns('cySlot', '课程期数', ' ', '请选择课程期数', { span: 24, rule: true })
     .createColumns('logo', ' 企业logo', 'ZlSingleUpload', '企业logo', { span: 24, rule: true })
     .createColumns('type', '企业类型', 'select', '企业类型', {
       span: 24,
@@ -51,12 +54,14 @@ const state = reactive({
       ],
     })
     .createColumns('ocr', ' 营业执照', 'ZlFileListUpload', '请上传营业执照', { span: 24, rule: true }),
+  dialogVisible: false,
+  dialogRef: null,
 });
-const { form } = toRefs(state);
+const { form, dialogVisible, dialogRef } = toRefs(state);
 // 传入传出
 const props = defineProps({
   formConfig: { type: Object, default: {} }, // 表单配置
-  visible: { type: Boolean, default: {} }, // 表单开关
+  visible: { type: Boolean, default: false }, // 表单开关
 });
 const emit = defineEmits(['close', 'submit', 'change', 'delete']);
 const isEdit = ref(false);
@@ -68,14 +73,13 @@ watch(
   () => props.visible,
   async (nl, ol) => {
     if (!nl) return state.form.close();
-    console.log('nl', props.formConfig);
-
     // 设置表格
     state.form.open(props.formConfig.title, props.formConfig.type, {
       formData: props.formConfig.formData,
       showDelete: props.formConfig.showDelete,
       showSubmit: props.formConfig.showSubmit,
     });
+    debugger;
     if (!isEqual(props.formConfig.formData, {})) {
       isEdit.value = true;
     } else {
@@ -99,9 +103,14 @@ const submitForm = () => {
   }, 1000);
 };
 const closeForm = () => {
+  console.log(false);
+
   emit('submit');
 };
 /* #endregion */
+onMounted(() => {
+  console.log(form.value.visible, 'form.visible');
+});
 </script>
 
 <style lang="scss" scoped>

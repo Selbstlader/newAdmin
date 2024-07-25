@@ -16,4 +16,5 @@ export interface DialogProps {
   sameDisabled: boolean, // 同，禁用
   deleteColor: string,
   permission: string,
+  title: string
 }
