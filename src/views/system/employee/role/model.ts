@@ -1,7 +1,7 @@
 import * as Api from '/@/api';
 import * as Utils from '/@/utils';
 import { Table } from '/@/components';
-import { ElMessage } from 'element-plus';
+import { useTable } from '/@/hooks/userTable';
 /* #region ********************************** 人员管理展示 ****************************************** */
 
 // 角色管理实例
@@ -61,15 +61,19 @@ export class roleList extends Table.ZlVXETableData<ShowRoleList> {
     this.searchTable.loading = true;
     let params = new Api.RoleApi.QueryRoleListReq(this.searchTable);
     params.pageNum = 1;
-    const res = await Api.RoleApi.QueryRoleList(params);
-    const { code, data, msg } = res;
-    if (code === 0) {
-      data.list as Api.RoleApi.RoleList[];
-      this.tableData = data.list;
-      this.count = data.total || 0;
-    } else {
-      ElMessage.error(msg);
-    }
+    // useTable(Api.RoleApi.QueryRoleList, props.initParam, props.pagination, props.dataCallback, props.requestError);
+    // const res = await Api.RoleApi.QueryRoleList(params);
+    // // 表格操作 Hooks
+    useTable(
+      Api.RoleApi.QueryRoleList,
+      params,
+    ).getTableList().then(res => {
+      console.log(res);
+      this.tableData = res?.list;
+      this.count = res?.count || 0
+    })
+
+
     return true;
   }
 }

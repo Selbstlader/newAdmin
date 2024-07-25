@@ -1,6 +1,7 @@
 export * as Table from './table';      // 表格    
 
 export * as Form from './form';     // 表单
+export * as Dialog from './dialog/dialog.vue';
 export { default as ZlTag } from './zlTag/index.vue';                                 // 标签、按钮组件
 export { default as ZlTitle } from './zlTitle/index.vue';                             // 标题组件
 export { default as ZlRemind } from './zlRemind/index.vue';                           // 提醒组件

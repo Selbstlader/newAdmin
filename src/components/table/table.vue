@@ -348,7 +348,7 @@ import * as Utils from '../../utils';
 import useStore from '../../store/store';
 import variables from '../../assets/styles/export.module.scss';
 import request from '../../utils/request';
-
+import { ProTableProps } from './interface';
 /* #endregion */
 
 /* #region ********************************************** 数据准备 ********************************************** */
@@ -356,42 +356,84 @@ import request from '../../utils/request';
 const { user } = useStore();
 
 // 传入
-const props = defineProps({
-  zlvalue: { type: Object, default: {} }, // 数据
-  showTable: { type: Boolean, default: true }, // 是否显示表格
-  showSearch: { type: Boolean, default: true }, // 是否显示搜索区域
-  custom: { type: Boolean, default: true }, // 是否显示列配置图标
-  pager: { type: Boolean, default: true }, // 是否显示分页器
-  tools: { type: Boolean, default: true }, // 是否显示工具条
-  more: { type: Boolean, default: false }, // 是否显示更多按钮
-  export: { type: Boolean, default: false }, // 显示导出
-  import: { type: Boolean, default: false }, // 显示导入
-  exportDisabled: { type: Boolean, default: false }, // 禁用导出
-  importDisabled: { type: Boolean, default: false }, // 禁用导出
-  pageSize: { type: Array, default: [10, 20, 50, 100] }, // 分页器的初始数据
-  highLightFirst: { type: Boolean, default: false }, // 是否进来高亮第一行
-  getHeader: { type: Boolean, default: false }, // 是否加载Header
-  reset: { type: Boolean, default: false }, // 是否重置
-  refresh: { type: Boolean, default: false }, // 刷新
-  setSearchValue: { type: Object, default: {} }, // 是否修改某个搜索参数
-  rowConfig: { type: Object, default: {} }, // VXE行配置
-  columnConfig: { type: Object, default: { resizable: true } }, // VXE列配置
-  treeConfig: { type: Object, default: {} }, // VXE树配置
-  exportOut: { type: Boolean, default: false }, // 监听导入
-  getTableColumns: { type: Boolean, default: true }, // 是否加载的时候读取排序
-  merge: { type: Object, defalut: {} }, // 合并行的配置
-  empty: { type: String, default: '暂无数据' }, // 没有数据的文字
-  showFooter: { type: Boolean, default: false }, // 显示合计栏
-  footerNumber: { type: Number, default: 0 }, // 合计栏，合计显示在哪一列
-  canDrop: { type: Boolean, default: true }, // 能否拖动列
-  canWidth: { type: Boolean, default: true }, // 能否拖动宽度
-  haveMenu: { type: Boolean, default: false }, // 是否带有menu，左上角的圆角干掉
-  mergeCells: { type: Array, default: [] }, // 合并规则
-  tableID: { type: String, default: '' }, // tableID
-  topPosition: { type: Boolean, default: true }, // 是否搜索悬浮
-  groupName: { type: String, default: '' },
-  allSelect: { type: Boolean, default: false }, // 多选框是否全选
-  showSearchRight: { type: Boolean, default: true }, // 是否显示右边的搜索操作按钮
+// const props = defineProps({
+//   zlvalue: { type: Object, default: {} }, // 数据
+//   showTable: { type: Boolean, default: true }, // 是否显示表格
+//   showSearch: { type: Boolean, default: true }, // 是否显示搜索区域
+//   custom: { type: Boolean, default: true }, // 是否显示列配置图标
+//   pager: { type: Boolean, default: true }, // 是否显示分页器
+//   tools: { type: Boolean, default: true }, // 是否显示工具条
+//   more: { type: Boolean, default: false }, // 是否显示更多按钮
+//   export: { type: Boolean, default: false }, // 显示导出
+//   import: { type: Boolean, default: false }, // 显示导入
+//   exportDisabled: { type: Boolean, default: false }, // 禁用导出
+//   importDisabled: { type: Boolean, default: false }, // 禁用导出
+//   pageSize: { type: Array, default: [10, 20, 50, 100] }, // 分页器的初始数据
+//   highLightFirst: { type: Boolean, default: false }, // 是否进来高亮第一行
+//   getHeader: { type: Boolean, default: false }, // 是否加载Header
+//   reset: { type: Boolean, default: false }, // 是否重置
+//   refresh: { type: Boolean, default: false }, // 刷新
+//   setSearchValue: { type: Object, default: {} }, // 是否修改某个搜索参数
+//   rowConfig: { type: Object, default: {} }, // VXE行配置
+//   columnConfig: { type: Object, default: { resizable: true } }, // VXE列配置
+//   treeConfig: { type: Object, default: {} }, // VXE树配置
+//   exportOut: { type: Boolean, default: false }, // 监听导入
+//   getTableColumns: { type: Boolean, default: true }, // 是否加载的时候读取排序
+//   merge: { type: Object, defalut: {} }, // 合并行的配置
+//   empty: { type: String, default: '暂无数据' }, // 没有数据的文字
+//   showFooter: { type: Boolean, default: false }, // 显示合计栏
+//   footerNumber: { type: Number, default: 0 }, // 合计栏，合计显示在哪一列
+//   canDrop: { type: Boolean, default: true }, // 能否拖动列
+//   canWidth: { type: Boolean, default: true }, // 能否拖动宽度
+//   haveMenu: { type: Boolean, default: false }, // 是否带有menu，左上角的圆角干掉
+//   mergeCells: { type: Array, default: [] }, // 合并规则
+//   tableID: { type: String, default: '' }, // tableID
+//   topPosition: { type: Boolean, default: true }, // 是否搜索悬浮
+//   groupName: { type: String, default: '' },
+//   allSelect: { type: Boolean, default: false }, // 多选框是否全选
+//   showSearchRight: { type: Boolean, default: true }, // 是否显示右边的搜索操作按钮
+//   // requestApi?: (params: any) => Promise<any>; // 请求表格数据的 api ==> 非必传
+//   // requestAuto?: boolean; // 是否自动执行请求 api ==> 非必传（默认为true）
+//   // requestError?: (params: any) => void; // 表格 api 请求错误监听 ==> 非必传
+//   // dataCallback?: (data: any) => any; // 返回数据的回调函数，可以对数据进行处理 ==> 非必传
+// });
+
+const props = withDefaults(defineProps<ProTableProps>(), {
+  zlvalue: {},
+  showTable: true,
+  showSearch: true,
+  custom: true,
+  pager: true,
+  tools: true,
+  more: false,
+  export: false,
+  import: false,
+  exportDisabled: false,
+  importDisabled: false,
+  pageSize: [10, 20, 50, 100],
+  highLightFirst: false,
+  getHeader: false,
+  reset: false,
+  refresh: false,
+  setSearchValue: {},
+  rowConfig: {},
+  columnConfig: { resizable: true },
+  treeConfig: {},
+  exportOut: false,
+  getTableColumns: true,
+  merge: {},
+  empty: '暂无数据',
+  showFooter: false,
+  footerNumber: 0,
+  canDrop: true,
+  canWidth: true,
+  haveMenu: false,
+  mergeCells: [],
+  tableID: '',
+  topPosition: true,
+  groupName: '',
+  allSelect: false,
+  showSearchRight: true,
 });
 // 导出
 const emit = defineEmits(['getPageInfo', 'changeRow', 'getSearch', 'getMore', 'changeCurrent', 'changeCurrentAll', 'import', 'change']);

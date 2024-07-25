@@ -95,8 +95,8 @@ export class ZlVXETableHeadersDataCreate {
 /* #region ************************************************************* 表格数据 *************************************************************  */
 // 搜索
 export class ZlVXETableSearch {
-    page:number = 1;                       // 页数
-    pageSize:number = 10;                  // 每页条数
+    page: number = 1;                       // 页数
+    pageSize: number = 10;                  // 每页条数
     [key: string]: any;                     // 其他参数
     constructor(params?: any) {
         for (const key in params) this[key] = params[key];

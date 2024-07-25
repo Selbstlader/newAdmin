@@ -1,0 +1,37 @@
+export interface ProTableProps {
+  zlvalue: any; // 数据
+  showTable: boolean; // 是否显示表格
+  showSearch: boolean; // 是否显示搜索区域
+  custom: boolean; // 是否显示列配置图标
+  pager: boolean; // 是否显示分页器
+  tools: boolean; // 是否显示工具条
+  more: boolean; // 是否显示更多按钮
+  export: boolean; // 显示导出
+  import: boolean; // 显示导入
+  exportDisabled: boolean; // 禁用导出
+  importDisabled: boolean; // 禁用导出
+  pageSize: any; // 分页器的初始数据
+  highLightFirst: boolean; // 是否进来高亮第一行
+  getHeader: boolean; // 是否加载Header
+  reset: boolean; // 是否重置
+  refresh: boolean; // 刷新
+  setSearchValue: any; // 是否修改某个搜索参数
+  rowConfig: any; // VXE行配置
+  columnConfig: any; // VXE列配置
+  treeConfig: any; // VXE树配置
+  exportOut: boolean; // 监听导入
+  getTableColumns: boolean; // 是否加载的时候读取排序
+  merge: any; // 合并行的配置
+  empty: string; // 没有数据的文字
+  showFooter: boolean; // 显示合计栏
+  footerNumber: number; // 合计栏，合计显示在哪一列
+  canDrop: boolean; // 能否拖动列
+  canWidth: boolean; // 能否拖动宽度
+  haveMenu: boolean; // 是否带有menu，左上角的圆角干掉
+  mergeCells: any; // 合并规则
+  tableID: string; // tableID
+  topPosition: boolean; // 是否搜索悬浮
+  groupName: string;
+  allSelect: boolean; // 多选框是否全选
+  showSearchRight: boolean; // 是否显示右边的搜索操作按钮
+}
