@@ -55,7 +55,7 @@
           </keep-alive>
         </router-view>
       </a-layout-content>
-     
+
       <!-- footer 版权公司信息 -->
       <!-- <a-layout-footer class="layout-footer" v-show="footerFlag">
         <smart-footer />
@@ -71,171 +71,171 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, onMounted, ref } from 'vue';
-  import { useAppConfigStore } from '../store/modules/system/app-config';
-  import HeaderUserSpace from './components/header-user-space/index.vue';
-  import MenuLocationBreadcrumb from './components/menu-location-breadcrumb/index.vue';
-  import PageTag from './components/page-tag/index.vue';
-  import SideMenu from './components/side-menu/index.vue';
-  import SmartFooter from './components/smart-footer/index.vue';
-  import { smartKeepAlive } from './smart-keep-alive';
-  import IframeIndex from '/@/components/framework/iframe/iframe-index.vue';
-  import watermark from '/@/lib/smart-wartermark';
-  import { useUserStore } from '../store/modules/system/user';
-  import SideHelpDoc from './components/side-help-doc/index.vue';
-  import { useRouter } from 'vue-router';
-  import { HOME_PAGE_NAME } from '/@/constants/system/home-const';
+import { computed, onMounted, ref } from 'vue';
+import { useAppConfigStore } from '../store/modules/system/app-config';
+import HeaderUserSpace from './components/header-user-space/index.vue';
+import MenuLocationBreadcrumb from './components/menu-location-breadcrumb/index.vue';
+import PageTag from './components/page-tag/index.vue';
+import SideMenu from './components/side-menu/index.vue';
+import SmartFooter from './components/smart-footer/index.vue';
+import { smartKeepAlive } from './smart-keep-alive';
+import IframeIndex from '/@/components/framework/iframe/iframe-index.vue';
+import watermark from '/@/lib/smart-wartermark';
+import { useUserStore } from '../store/modules/system/user';
+import SideHelpDoc from './components/side-help-doc/index.vue';
+import { useRouter } from 'vue-router';
+import { HOME_PAGE_NAME } from '/@/constants/system/home-const';
 
-  const windowHeight = ref(window.innerHeight);
-  //菜单宽度
-  const sideMenuWidth = computed(() => useAppConfigStore().$state.sideMenuWidth);
-  //主题颜色
-  const theme = computed(() => useAppConfigStore().$state.sideMenuTheme);
-  //是否显示标签页
-  const pageTagFlag = computed(() => useAppConfigStore().$state.pageTagFlag);
-  // 是否显示帮助文档
-  const helpDocFlag = computed(() => useAppConfigStore().$state.helpDocFlag);
-  // 是否显示页脚
-  const footerFlag = computed(() => useAppConfigStore().$state.footerFlag);
-  //是否隐藏菜单
-  const collapsed = ref(false);
+const windowHeight = ref(window.innerHeight);
+//菜单宽度
+const sideMenuWidth = computed(() => useAppConfigStore().$state.sideMenuWidth);
+//主题颜色
+const theme = computed(() => useAppConfigStore().$state.sideMenuTheme);
+//是否显示标签页
+const pageTagFlag = computed(() => useAppConfigStore().$state.pageTagFlag);
+// 是否显示帮助文档
+const helpDocFlag = computed(() => useAppConfigStore().$state.helpDocFlag);
+// 是否显示页脚
+const footerFlag = computed(() => useAppConfigStore().$state.footerFlag);
+//是否隐藏菜单
+const collapsed = ref(false);
 
-  //页面初始化的时候加载水印
-  onMounted(() => {
-    watermark.set('smartAdminLayoutContent', useUserStore().actualName);
-  });
+//页面初始化的时候加载水印
+onMounted(() => {
+  watermark.set('smartAdminLayoutContent', useUserStore().actualName);
+});
 
-  //回到顶部
-  const backTopTarget = () => {
-    return document.getElementById('smartAdminMain');
-  };
+//回到顶部
+const backTopTarget = () => {
+  return document.getElementById('smartAdminMain');
+};
 
-  const router = useRouter();
-  function goHome() {
-    router.push({ name: HOME_PAGE_NAME });
-  }
+const router = useRouter();
+function goHome() {
+  router.push({ name: HOME_PAGE_NAME });
+}
 
-  window.addEventListener('resize', function () {
-    windowHeight.value = window.innerHeight;
-  });
+window.addEventListener('resize', function () {
+  windowHeight.value = window.innerHeight;
+});
 
-  // ----------------------- keep-alive相关 -----------------------
-  let { route, keepAliveIncludes, iframeNotKeepAlivePageFlag, keepAliveIframePages } = smartKeepAlive();
+// ----------------------- keep-alive相关 -----------------------
+let { route, keepAliveIncludes, iframeNotKeepAlivePageFlag, keepAliveIframePages } = smartKeepAlive();
 </script>
 
 <style lang="less" scoped>
-  :deep(.ant-layout-header) {
-    height: auto;
-  }
-  :deep(.layout-header) {
-    height: auto;
+:deep(.ant-layout-header) {
+  height: auto;
+}
+:deep(.layout-header) {
+  height: auto;
+}
+
+.layout-header {
+  background: @gray-3;
+  padding: 0;
+  z-index: 999;
+}
+
+.layout-header-user {
+  height: @header-user-height;
+  border-bottom: 1px solid #f6f6f6;
+}
+
+.layout-header-left {
+  display: flex;
+  height: @header-user-height;
+  align-items: center;
+
+  .collapsed-button {
+    margin-left: 10px;
+    line-height: @header-user-height;
   }
 
-  .layout-header {
-    background: #fff;
-    padding: 0;
-    z-index: 999;
+  .home-button {
+    margin-left: 15px;
+    cursor: pointer;
+    padding: 0 5px;
+    line-height: @header-user-height;
   }
 
-  .layout-header-user {
-    height: @header-user-height;
-    border-bottom: 1px solid #f6f6f6;
+  .home-button:hover {
+    background-color: #efefef;
   }
 
-  .layout-header-left {
-    display: flex;
-    height: @header-user-height;
-    align-items: center;
+  .location-breadcrumb {
+    margin-left: 15px;
+    line-height: @header-user-height;
+  }
+}
 
-    .collapsed-button {
-      margin-left: 10px;
-      line-height: @header-user-height;
+.layout-header-right {
+  display: flex;
+  height: @header-user-height;
+}
+
+.layout-container {
+  height: calc(100vh - @header-height);
+  overflow-x: hidden;
+}
+
+.admin-layout {
+  .side-menu {
+    height: 100vh;
+    overflow-x: hidden;
+
+    &.fixed-side {
+      position: fixed;
+      height: 100vh;
+      left: 0;
+      top: 0;
     }
+  }
 
-    .home-button {
-      margin-left: 15px;
-      cursor: pointer;
-      padding: 0 5px;
-      line-height: @header-user-height;
+  .help-doc-sider {
+    flex: 0 !important;
+    min-width: 100px;
+    height: 100vh;
+    max-width: 100px;
+    width: auto !important;
+    &.fixed-side {
+      position: fixed;
+      height: 100vh;
+      right: 0;
+      top: 0;
     }
+  }
+  .virtual-side {
+    transition: all 0.2s;
+  }
 
-    .home-button:hover {
-      background-color: #efefef;
-    }
+  .virtual-header {
+    transition: all 0.2s;
+    opacity: 0;
 
-    .location-breadcrumb {
-      margin-left: 15px;
-      line-height: @header-user-height;
+    &.fixed-tabs.multi-page:not(.fixed-header) {
+      height: 0;
     }
   }
 
-  .layout-header-right {
-    display: flex;
-    height: @header-user-height;
-  }
-
-  .layout-container {
-    height: calc(100vh - @header-height);
+  .admin-layout-main {
+    overflow-y: hidden;
     overflow-x: hidden;
   }
 
-  .admin-layout {
-    .side-menu {
-      height: 100vh;
-      overflow-x: hidden;
-
-      &.fixed-side {
-        position: fixed;
-        height: 100vh;
-        left: 0;
-        top: 0;
-      }
-    }
-
-    .help-doc-sider {
-      flex: 0 !important;
-      min-width: 100px;
-      height: 100vh;
-      max-width: 100px;
-      width: auto !important;
-      &.fixed-side {
-        position: fixed;
-        height: 100vh;
-        right: 0;
-        top: 0;
-      }
-    }
-    .virtual-side {
-      transition: all 0.2s;
-    }
-
-    .virtual-header {
-      transition: all 0.2s;
-      opacity: 0;
-
-      &.fixed-tabs.multi-page:not(.fixed-header) {
-        height: 0;
-      }
-    }
-
-    .admin-layout-main {
-      overflow-y: hidden;
-      overflow-x: hidden;
-    }
-
-    .admin-layout-content {
-      min-height: auto;
-      position: relative;
-      overflow-x: hidden;
-      padding: 10px 10px 0px 10px;
-      height: v-bind('pageTagFlag ? "calc(100% - 80px)": "calc(100% - 40px)"');
-    }
-  }
-
-  .layout-footer {
+  .admin-layout-content {
+    min-height: auto;
     position: relative;
-    padding: 7px 0px;
-    display: flex;
-    justify-content: center;
+    overflow-x: hidden;
+    padding: 10px 10px 0px 10px;
+    height: v-bind('pageTagFlag ? "calc(100% - 80px)": "calc(100% - 40px)"');
   }
+}
+
+.layout-footer {
+  position: relative;
+  padding: 7px 0px;
+  display: flex;
+  justify-content: center;
+}
 </style>

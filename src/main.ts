@@ -52,6 +52,10 @@ import 'virtual:svg-icons-register';
 // import elementIcons from '/@/components/SvgIcon/svgicon';
 
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
+
+import { PAGE_PATH_404, PAGE_PATH_LOGIN } from '/@/constants/common-const';
+
+import { clearAllCoolies } from '/@/utils/cookie-util';
 /*
  * -------------------- ※ 着重 解释说明下这里的初始化逻辑 begin ※ --------------------
  *
@@ -80,6 +84,13 @@ async function getLoginInfo() {
   } catch (e) {
     message.error(e);
     smartSentry.captureError(e);
+    //  长时间未登录跳转登录页面
+    if (e.data.code == 30012) {
+
+      clearAllCoolies();
+      router.push(PAGE_PATH_LOGIN);
+    }
+
   }
 }
 

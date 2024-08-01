@@ -60,9 +60,6 @@ export class roleList extends Table.ZlVXETableData<ShowRoleList> {
   async query(): Promise<boolean> {
     this.searchTable.loading = true;
     let params = new Api.RoleApi.QueryRoleListReq(this.searchTable);
-    params.pageNum = 1;
-    // useTable(Api.RoleApi.QueryRoleList, props.initParam, props.pagination, props.dataCallback, props.requestError);
-    // const res = await Api.RoleApi.QueryRoleList(params);
     // // 表格操作 Hooks
     useTable(
       Api.RoleApi.QueryRoleList,

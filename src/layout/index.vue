@@ -8,7 +8,6 @@
 import { useRoute } from 'vue-router';
 import SmartHeader from './smart-header.vue';
 const route = useRoute();
-console.log(route, route.name);
 </script>
 
 <style lang="less" scoped>

@@ -1,6 +1,6 @@
 import * as Api from '..'
 import * as Utils from '../../utils'
-import { postRequest } from '../../lib/axios';
+import { postRequest, getRequest } from '../../lib/axios';
 /* #region *************************************************************** 角色管理******************************************************************  */
 export interface RoleList extends Api.Common.CommonTableSearch {
    /**
@@ -59,11 +59,11 @@ export interface QueryRoleListRes extends Api.Common.HttpResponse {
 // 接口地址 api
 // 查询角色列表
 export const QueryRoleList = async (param: QueryRoleListReq): Promise<QueryRoleListRes> => {
-   return postRequest('/oa/enterprise/page/query', param);
+   return getRequest('/role/getAll', param);
 }
 export const QueryAddRole = async (param: any): Promise<QueryRoleListRes> => {
-   return postRequest('/oa/enterprise/create', param);
+   return postRequest('/role/add', param);
 }
 export const QueryUpdateRole = async (param: any): Promise<QueryRoleListRes> => {
-   return postRequest('/oa/enterprise/update', param);
+   return postRequest('/role/update', param);
 }
