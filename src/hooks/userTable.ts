@@ -56,12 +56,11 @@ export const useTable = (
       Object.assign(state.totalParam, initParam);
       let res = await api({ ...state.searchInitParam, ...state.totalParam });
       const { code, data, msg } = res;
-
       if (code === 0) {
         // 确保list是数组，total是数字
         const processedData = {
-          list: Array.isArray(data.list) ? data.list : [],
-          count: typeof data.total === 'number' ? data.total : 0,
+          list: Array.isArray(data) ? data : [],
+          count: data.total || 0,
         };
         return processedData;
       } else {

@@ -138,13 +138,14 @@ let { route, keepAliveIncludes, iframeNotKeepAlivePageFlag, keepAliveIframePages
 }
 
 .layout-header-user {
-  height: @header-user-height;
+  // height: @header-user-height;
   border-bottom: 1px solid #f6f6f6;
 }
 
 .layout-header-left {
   display: flex;
-  height: @header-user-height;
+  // height: @header-user-height;
+
   align-items: center;
 
   .collapsed-button {
@@ -164,7 +165,8 @@ let { route, keepAliveIncludes, iframeNotKeepAlivePageFlag, keepAliveIframePages
   }
 
   .location-breadcrumb {
-    margin-left: 15px;
+    // margin-left: 15px;
+    padding: 16px;
     line-height: @header-user-height;
   }
 }
@@ -227,7 +229,7 @@ let { route, keepAliveIncludes, iframeNotKeepAlivePageFlag, keepAliveIframePages
     min-height: auto;
     position: relative;
     overflow-x: hidden;
-    padding: 10px 10px 0px 10px;
+    padding: 0px 16px 0px 16px;
     height: v-bind('pageTagFlag ? "calc(100% - 80px)": "calc(100% - 40px)"');
   }
 }

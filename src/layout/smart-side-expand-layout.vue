@@ -139,13 +139,18 @@ function goHome() {
 }
 
 .smart-layout-header-user {
-  height: @header-user-height;
+  // height: @header-user-height;
   border-bottom: 1px solid #f6f6f6;
 }
-
+.layout-header-use {
+  height: 0;
+}
+:deep(.layout-header-left) {
+  height: 0;
+}
 .smart-layout-header-left {
   display: flex;
-  height: @header-user-height;
+  // height: @header-user-height;
 
   .collapsed-button {
     margin-left: 10px;

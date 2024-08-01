@@ -26,7 +26,6 @@
           smallIcon: props.size == 'small' && props.icon,
           mini: props.size == 'mini' && !props.icon,
           miniIcon: props.size == 'mini' && props.icon,
-
           searchButton: props.type == 'search' && props.effect == 'light' && !props.disabled,
           searchButtonHovert: getTagType == 'button' && props.type == 'search' && props.effect == 'light',
 
@@ -114,7 +113,7 @@
 </template>
 <script lang="ts" setup>
 import { computed } from 'vue';
-import variables from '/@/assets/styles/export.module.scss'
+import variables from '/@/assets/styles/export.module.scss';
 import { appDefaultConfig } from '/@/config/app-config';
 const props = defineProps({
   tagType: {
@@ -348,12 +347,12 @@ const getSize = computed<any>(() => {
   // background: $zlTagHoverColor_danger;
 }
 
-.info {
-  // color: $zlTagColor_info;
-  // background: $zlTagBgColor_info;
-  background: none;
-  // border-color: $zlTagBdColor_info;
-}
+// .info {
+//   // color: $zlTagColor_info;
+//   // background: $zlTagBgColor_info;
+//   background: none;
+//   // border-color: $zlTagBdColor_info;
+// }
 
 .infoSelect {
   cursor: pointer;
@@ -485,8 +484,8 @@ const getSize = computed<any>(() => {
 }
 
 .primaryLight {
-  background: #3370ff;
-  border: #3370ff;
+  background: #2882e8;
+  border: #2882e8;
   color: #fff;
 }
 
@@ -507,7 +506,16 @@ const getSize = computed<any>(() => {
   border: #909399;
   color: #fff;
 }
-
+.info {
+  border: 1px solid #c7ccd6;
+  background: #fff;
+  color: #8c98a4;
+}
+.info::hov {
+  border: 1px solid #c7ccd6;
+  background: #fff;
+  color: #8c98a4;
+}
 .successLightDisabled {
   background: #3e6b27;
   border: #3e6b27;
@@ -596,6 +604,7 @@ const getSize = computed<any>(() => {
 .infoLightHover:hover {
   cursor: pointer;
   background: #6b6d71;
+  color: #6b6d71;
 }
 
 :deep(.el-badge__content.is-fixed) {

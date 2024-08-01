@@ -50,6 +50,14 @@ export const roleApi = {
   updateDataScope: (data) => {
     return postRequest('/role/dataScope/updateRoleDataScopeList', data);
   },
+    /**
+   * @description: 获取当前角色数据
+   * @param {DataScopeBatchSetRoleDto} data
+   * @return {*}
+   */
+    getRoleDetail: (roleId) => {
+      return getRequest(`/role/get/${roleId}`);
+    },
   /**
    * @description: 获取当前系统所配置的所有数据范围
    * @param {*}

@@ -202,8 +202,8 @@
             style="margin-right: 12px"
             :disabled="props.exportDisabled"
             tagType="button"
-            type="search"
-            effect="light"
+            type="info"
+            effect="dark"
             size="small"
             @click="bindExportTable"
             ><el-icon style="margin-right: 6px"><Download /></el-icon>导出</ZlTag
@@ -1346,7 +1346,7 @@ defineExpose({
             display: flex;
             align-items: center;
             .z_header_input_label {
-              width: 85px;
+              // width: 85px;
               display: flex;
               margin-right: $smallPadding;
               align-items: center;
@@ -1409,7 +1409,7 @@ defineExpose({
     // background: $tableBg;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    // justify-content: space-between;
     margin: 0 16px;
     .zl_top_l {
       display: flex;
@@ -1777,5 +1777,8 @@ defineExpose({
 }
 .resultBtn {
   color: $refreshBg;
+}
+:deep(.vxe-table--body-wrapper) {
+  min-height: calc(100vh - 500px) !important;
 }
 </style>
