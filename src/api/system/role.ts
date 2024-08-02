@@ -67,3 +67,6 @@ export const QueryAddRole = async (param: any): Promise<QueryRoleListRes> => {
 export const QueryUpdateRole = async (param: any): Promise<QueryRoleListRes> => {
    return postRequest('/role/update', param);
 }
+export const QueryAuditRoleList = async (param: any): Promise<QueryRoleListRes> => {
+   return getRequest('/role/getAudit', param);
+}

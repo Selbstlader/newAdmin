@@ -1,89 +1,174 @@
 <template>
-  <div>
-    <Table.Table :zlvalue="{ ...table, ...tableConfig }" :showSearch="true" :allSelect="true" @getSearch="queryData">
+  <a-card class="role-container" style="padding: 0">
+    <Table.Table
+      :zlvalue="{ ...table, ...tableConfig }"
+      :showSearch="true"
+      :allSelect="true"
+      @getSearch="queryData"
+      :pager="false"
+      :showSearchRight="false"
+      :custom="true"
+      :export="true"
+    >
       <template #left>
         <div class="default">
           <div class="flex-center">
-            <ZlTag style="margin-right: 12px" tagType="button" type="search" effect="light" size="small" @click="addRole"
-              ><el-icon style="margin-right: 6px">
-                <el-icon><Plus /></el-icon> </el-icon
-              >新增岗位</ZlTag
+            <ZlTag style="margin-right: 12px" tagType="button" type="primary" effect="light" size="small" @click="addRole">
+              <PlusOutlined /> 新增</ZlTag
             >
           </div>
         </div>
       </template>
-      <template #showIsChecke="{ row }">
-        <div style="display: flex; justify-content: flex-start">
-          <ZlTag v-if="row.enterpriseId == '1'" type="success"><span class="successColor">在线</span></ZlTag>
-          <ZlTag v-if="row.enterpriseId == '2'" type="danger"><span class="dangerColor">离线</span></ZlTag>
-        </div>
-      </template>
+
       <template #operation="{ row }">
         <el-button link type="primary" @click="roleEdit(row)">编辑</el-button>
-        <!-- <el-button link type="primary" @click="roleView(row)">查看</el-button> -->
+        <el-button link type="danger" @click="roleDelete(row)">删除</el-button>
       </template>
     </Table.Table>
-  </div>
+    <!-- 新增和编辑 -->
+    <Form.Form :visible="form.visible" labelWidth="140px" :zlvalue="form" :showDelete="form.showDelete" @close="close" @submit="submit" />
+  </a-card>
 </template>
-
 <script setup lang="ts">
+import { message, Modal } from 'ant-design-vue';
+import _ from 'lodash';
+import { computed, onMounted, ref, reactive, toRefs } from 'vue';
+// import { h } from 'vue';
+// import { DeleteOutlined, EditOutlined } from '@ant-design/icons-vue';
+// import { roleApi } from '/@/api/system/role/role-api';
+import { SmartLoading } from '/@/components/framework/smart-loading';
+import { RoleTreeList } from '/@/views/system/role/index.ts';
 import { Table, ZlTag } from '/@/components';
-import { reactive, onMounted, toRefs, watch } from 'vue';
 
-import { roleApi } from '/@/api/system/role/role-api';
+import { Form } from '/@/components/index';
+import { FormData } from '/@/components/form/module/index';
+import { RoleForm } from '/@/views/system/role/module/roleForm.ts';
+import { PlusOutlined } from '@ant-design/icons-vue';
+
+import { ElMessage } from 'element-plus';
+// ----------------------- 角色列表显示 ---------------------
+
+// 数据
 const state = reactive({
   tableConfig: new Table.ZlVXETable('index', 'roleIndex')
-    .createColumns('', '', '20', { type: 'checkbox', fixed: 'left' })
+    // .createColumns('', '', '20', { type: 'checkbox', fixed: 'left' })
     .createColumns('index', '序号', '60')
-    .createColumns('enterpriseName', '企业名称', '180', { searchType: 'input' })
-    .createColumns('unifiedSocialCreditCode', '统一社会信用代码', '170')
-    .createColumns('type', '企业类型', '100')
-    .createColumns('contact', '联系人', '100')
-    .createColumns('contactPhone', '联系人电话', '100')
-    .createColumns('email', '邮箱', '100')
-    .createColumns('disabledFlag', '状态', '100', {
-      slots: { default: 'showIsChecke' },
-      searchField: 'isCheckList',
-      options: [
-        { name: '在线', value: '1', check: true },
-        { name: '离线', value: '0', check: true },
-      ],
-    })
-    .createColumns('createUserName', '创建人', '100')
-    .createColumns('createTime', '创建时间', '100')
+    .createColumns('roleName', '角色', '180', { searchType: 'input' })
+    .createColumns('roleRisk', '风险点', '170')
+    .createColumns('remark', '备注', '170')
     .createColumns('', '操作', '120', {
       slots: { default: 'operation' },
       fixed: 'right',
     }),
-  table: {} as any,
+  table: {} as RoleTreeList,
+  form: {
+    title: '企业类型',
+    visible: false,
+    type: '',
+    formData: new RoleForm()
+      .createColumns('roleName', '角色名称', 'input', '请输入', { span: 24, rule: true, autosize: { minRows: 3 } })
+      .createColumns('roleCode', '角色编码', 'input', '请输入角色编码', { span: 24, autosize: { minRows: 3 } })
+      .createColumns('roleRisk', '风险点', 'textarea', '请输入风险点', { span: 24, autosize: { minRows: 3 } })
+      .createColumns('remark', '备注', 'input', '请输入备注', { span: 24 }) as RoleForm,
+    showSubmit: true,
+    showDelete: false,
+  } as FormData,
+});
+const { tableConfig, table, form } = toRefs(state);
 
-  isEdit: true,
-});
-const { table, tableConfig, isEdit } = toRefs(state);
-interface roleProps {
-  roleId: number; // 数据
-}
-const props = withDefaults(defineProps<roleProps>(), {
-  roleId: 1,
-});
-// 监听类型变化
-watch(
-  () => props.roleId,
-  () => {
-    queryData();
-  }
-);
-// 初始化
+// 查询列表
+// 获取list
+const queryData = async (params?: any, isReset?: boolean) => {
+  state.table.search(params, isReset).queryAuditRole();
+};
 onMounted(() => {
+  state.table = new RoleTreeList();
   queryData();
 });
-const queryData = async () => {
-  // table.value = {
-  //   roleId: props.roleId,
-  // };
-  const data = await roleApi.getRoleDetail(props.roleId);
-};
-</script>
 
-<style lang="scss" scoped>
+// ----------------------- 添加、修改、删除 ---------------------------------
+const addRole = () => {
+  state.form.formData.formData = {
+    roleType: 2,
+  };
+  form.value.visible = true;
+};
+const close = () => {
+  form.value.visible = false;
+};
+// 提交
+const submit = async (formData: any) => {
+  try {
+    if (!formData.roleId) {
+      const res = await state.form.formData.add(formData);
+      if (res) {
+        ElMessage.success({
+          message: '新建角色成功',
+        });
+      }
+    } else {
+      const res = await state.form.formData.QueryUpdateRole(formData);
+      if (res) {
+        ElMessage.success({
+          message: '更新角色成功',
+        });
+      }
+    }
+  } catch (error) {
+    ElMessage.error({
+      message: '操作失败，请检查网络或稍后再试',
+    });
+  } finally {
+    // 无论成功还是失败，都会执行这里的代码
+    form.value.visible = false;
+    queryData();
+  }
+};
+// 编辑
+const roleEdit = (row) => {
+  state.form.formData.updateFormData(row);
+  form.value.visible = true;
+};
+// 删除角色
+function deleteRole(roleId) {
+  if (!roleId) {
+    return;
+  }
+  Modal.confirm({
+    title: '提示',
+    content: '确定要删除该角色么？',
+    okText: '确定',
+    okType: 'danger',
+    async onOk() {
+      SmartLoading.show();
+      try {
+        await roleApi.deleteRole(roleId);
+        message.info('删除成功');
+        queryAllRole();
+      } catch (e) {
+        smartSentry.captureError(e);
+      } finally {
+        SmartLoading.hide();
+      }
+    },
+    cancelText: '取消',
+    onCancel() {},
+  });
+}
+
+// ----------------------- 以下是暴露的方法内容 ----------------------------
+</script>
+<style scoped lang="less">
+.role-container {
+  height: 100%;
+
+  :deep(.ant-card-body) {
+    padding: 5px;
+  }
+}
+.ant-menu-inline,
+.ant-menu-vertical,
+.ant-menu-vertical-left {
+  border-right: none;
+}
 </style>

@@ -21,7 +21,7 @@
             <!-- <template #icon>
               <component :is="$antIcons[item.icon]" />
             </template> -->
-            <span style="right: 70px; position: absolute; top: 0">{{ item.menuName }}</span>
+            <span style="left: 20px; position: absolute; top: 0; text-align: left">{{ item.menuName }}</span>
           </a-menu-item>
         </template>
         <template v-else>

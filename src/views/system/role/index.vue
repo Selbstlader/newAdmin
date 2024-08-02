@@ -4,6 +4,7 @@
       <a-tabs v-model:activeKey="activeKey">
         <a-tab-pane key="1" tab="系统角色"> <RoleList ref="roleList" /></a-tab-pane>
         <a-tab-pane key="2" tab="审批角色">
+          <SignRole />
           <!-- <RoleDataScope /> -->
         </a-tab-pane>
       </a-tabs>
@@ -21,7 +22,7 @@ import { computed, provide, ref, toRefs, reactive } from 'vue';
 import RoleList from './components/role-list/index.vue';
 // import RoleSetting from './components/role-setting/index.vue';
 // import RoleTree from './components/role-tree/index.vue';
-// import SignRole from './components/sign-role/index.vue';
+import SignRole from './components/sign-role/index.vue';
 
 // 数据
 const state = reactive({

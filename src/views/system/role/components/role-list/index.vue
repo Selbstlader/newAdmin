@@ -96,17 +96,28 @@ const close = () => {
 };
 // 提交
 const submit = (formData: any) => {
-  state.form.formData.add(formData).then((res) => {
-    if (res)
-      ElMessage.success({
-        message: '新建角色成功',
-      });
-    queryData();
-  });
+  if (!formData.roleId) {
+    // 如果是新增
+    state.form.formData.add(formData).then((res) => {
+      if (res)
+        ElMessage.success({
+          message: '新建角色成功',
+        });
+    });
+  } else {
+    state.form.formData.QueryUpdateRole(formData).then((res) => {
+      if (res)
+        ElMessage.success({
+          message: '编辑角色成功',
+        });
+    });
+  }
+  form.value.visible = false;
+  queryData();
 };
 // 编辑
 const roleEdit = (row) => {
-  state.form.formData.formData = row;
+  state.form.formData.updateFormData(row);
   form.value.visible = true;
 };
 // 删除角色

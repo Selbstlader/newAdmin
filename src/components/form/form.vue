@@ -12,7 +12,7 @@
       <!-- 表单数据 -->
       <slot name="body-top"></slot>
       <div class="zlFormV2_body_box">
-        <el-form inline ref="formRef" :rules="form.rules" label-position="right" :label-width="`${props.labelWidth}`" :model="form.formData">
+        <el-form inline ref="formRef" :rules="form.rules" label-position="right" :label-width="`${props.labelWidth}`" :model="form.formData.formData">
           <el-row :gutter="props.rowGutter">
             <el-col
               :span="rowValue.span || 12"
@@ -135,7 +135,7 @@
                 </div>
                 <el-input
                   v-if="!rowValue.unShowItem"
-                  v-model="form.formData[rowKey]"
+                  v-model="form.formData.formData[rowKey]"
                   :id="props.formID + rowKey"
                   @change="(e: any) => formItemChanged(e, 'change', rowValue, rowKey)"
                   @blur="(e: any) => formItemChanged(e, 'blur', rowValue, rowKey)"
@@ -177,7 +177,7 @@
                 </div>
                 <el-input
                   v-if="!rowValue.unShowItem"
-                  v-model="form.formData[rowKey]"
+                  v-model="form.formData.formData[rowKey]"
                   type="number"
                   :id="props.formID + rowKey"
                   @change="(e: any) => formItemChanged(e, 'change', rowValue, rowKey)"
@@ -219,7 +219,7 @@
                 </div>
                 <el-input-number
                   v-if="!rowValue.unShowItem"
-                  v-model="form.formData[rowKey]"
+                  v-model="form.formData.formData[rowKey]"
                   type="number"
                   :id="props.formID + rowKey"
                   @change="(e: any) => formItemChanged(e, 'change', rowValue, rowKey)"
@@ -262,7 +262,7 @@
                 </div>
                 <el-input
                   v-if="!rowValue.unShowItem"
-                  v-model="form.formData[rowKey]"
+                  v-model="form.formData.formData[rowKey]"
                   :type="loginPassIco[rowKey] ? 'text' : 'password'"
                   :id="props.formID + rowKey"
                   @change="(e: any) => formItemChanged(e, 'change', rowValue, rowKey)"
@@ -313,7 +313,7 @@
                 </div>
                 <el-input
                   v-if="!rowValue.unShowItem"
-                  v-model="form.formData[rowKey]"
+                  v-model="form.formData.formData[rowKey]"
                   type="textarea"
                   input-style="inputstyle"
                   :id="props.formID + rowKey"
@@ -359,7 +359,7 @@
                 </div>
                 <el-select
                   v-if="!rowValue.unShowItem"
-                  v-model="form.formData[rowKey]"
+                  v-model="form.formData.formData[rowKey]"
                   :id="props.formID + rowKey"
                   @change="(e: any) => formItemChanged(e, 'change', rowValue, rowKey)"
                   @clear="(e: any) => formItemChanged(e, 'blur', rowValue, rowKey)"
@@ -416,7 +416,7 @@
                   </div>
                   <el-select
                     v-if="!rowValue.unShowItem"
-                    v-model="form.formData[rowKey]"
+                    v-model="form.formData.formData[rowKey]"
                     @change="(e: any) => formItemChanged(e, 'change', rowValue, rowKey)"
                     @clear="(e: any) => formItemChanged(e, 'blur', rowValue, rowKey)"
                     :placeholder="rowValue.placeholder || ' '"
@@ -469,7 +469,7 @@
                   :id="props.formID + rowKey"
                   @visible-change="openPickDate(rowKey.toString())"
                   @change="(e: any) => formItemChanged(e, 'change', rowValue, rowKey)"
-                  v-model="form.formData[rowKey]"
+                  v-model="form.formData.formData[rowKey]"
                   type="date"
                   :shortcuts="rowValue.shortcuts || []"
                   :placeholder="rowValue.placeholder || ''"
@@ -520,7 +520,7 @@
                   :id="props.formID + rowKey"
                   @visible-change="openPickDate(rowKey.toString())"
                   @change="(e: any) => formItemChanged(e, 'change', rowValue, rowKey)"
-                  v-model="form.formData[rowKey]"
+                  v-model="form.formData.formData[rowKey]"
                   type="date"
                   :shortcuts="rowValue.shortcuts || []"
                   :placeholder="rowValue.placeholder || ''"
@@ -564,7 +564,7 @@
                   :id="props.formID + rowKey"
                   @visible-change="openPickDate(rowKey.toString())"
                   @change="(e: any) => formItemChanged(e, 'change', rowValue, rowKey)"
-                  v-model="form.formData[rowKey]"
+                  v-model="form.formData.formData[rowKey]"
                   type="datetime"
                   :shortcuts="rowValue.shortcuts || []"
                   :placeholder="rowValue.placeholder || ''"
@@ -608,7 +608,7 @@
                   :id="props.formID + rowKey"
                   @visible-change="openPickDate(rowKey.toString())"
                   @change="(e: any) => formItemChanged(e, 'change', rowValue, rowKey)"
-                  v-model="form.formData[rowKey]"
+                  v-model="form.formData.formData[rowKey]"
                   type="month"
                   :shortcuts="rowValue.shortcuts || []"
                   :placeholder="rowValue.placeholder || ''"
@@ -652,7 +652,7 @@
                   :id="props.formID + rowKey"
                   @visible-change="openPickDate(rowKey.toString())"
                   @change="(e: any) => formItemChanged(e, 'change', rowValue, rowKey)"
-                  v-model="form.formData[rowKey]"
+                  v-model="form.formData.formData[rowKey]"
                   type="year"
                   :shortcuts="rowValue.shortcuts || []"
                   :placeholder="rowValue.placeholder || ''"
@@ -692,7 +692,7 @@
                 </div>
                 <el-switch
                   v-if="!rowValue.unShowItem"
-                  v-model="form.formData[rowKey]"
+                  v-model="form.formData.formData[rowKey]"
                   :id="props.formID + rowKey"
                   @change="(e: any) => formItemChanged(e, 'change', rowValue, rowKey)"
                   :size="rowValue.size || ''"
@@ -733,7 +733,7 @@
                 </div>
                 <el-radio-group
                   v-if="!rowValue.unShowItem"
-                  v-model="form.formData[rowKey]"
+                  v-model="form.formData.formData[rowKey]"
                   @change="(e: any) => formItemChanged(e, 'change', rowValue, rowKey)"
                 >
                   <el-radio
@@ -779,7 +779,7 @@
                 <el-radio-group
                   v-if="!rowValue.unShowItem"
                   @change="(e: any) => formItemChanged(e, 'change', rowValue, rowKey)"
-                  v-model="form.formData[rowKey]"
+                  v-model="form.formData.formData[rowKey]"
                 >
                   <el-radio
                     :id="`${props.formID}${rowKey}${i.value || i}`"
@@ -897,7 +897,7 @@
               >
                 <ZlFileListUpload
                   v-if="props.visible"
-                  v-model="form.formData[rowKey]"
+                  v-model="form.formData.formData[rowKey]"
                   :rowKey="props.formID + rowKey"
                   :showDelete="rowValue?.showDelete"
                   :showPreview="rowValue?.showPreview"
@@ -975,6 +975,7 @@ import * as Utils from '/@/utils';
 // 其它
 import useStore from '/@/store/store';
 import variables from '/@/assets/styles/export.module.scss';
+import { cloneDeep, debounce } from 'lodash';
 /* #endregion */
 
 /* #region ********************************************** 数据准备 ******************************************** */
@@ -1062,7 +1063,7 @@ watch(
 watch(
   () => props.zlvalue.formData.formData,
   (nl: any, ol: any) => {
-    console.log('formData', nl, props.visible);
+    state.form.formData.formData = {};
     state.form.formData.formData = nl;
   }
 );
@@ -1147,7 +1148,7 @@ const submitClick = Utils.debounce(async (formEl: FormInstance | undefined) => {
   try {
     await formEl.validate((valid: any, fields: any) => {
       if (valid) {
-        emit('submit', state.form.formData);
+        emit('submit', state.form.formData.formData);
       } else {
         console.log('error submit!', fields);
       }

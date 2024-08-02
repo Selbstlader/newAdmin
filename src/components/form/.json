@@ -1,120 +1,55 @@
 {
-  "title": "企业类型",
-  "visible": true,
-  "type": "",
   "formData": {
-    "showDelete": false,
-    "showSubmit": true,
-    "title": "",
-    "loading": false,
-    "type": "",
-    "columns": {
-      "enterpriseName": {
-        "span": 24,
-        "rule": true,
-        "autosize": {
-          "minRows": 3
-        },
-        "showTip": true,
-        "title": "企业名称",
-        "type": "input",
-        "placeholder": "无内容"
-      },
-      "cySlot": {
-        "span": 24,
-        "rule": true,
-        "showTip": true,
-        "title": "课程期数",
-        "type": " ",
-        "placeholder": "请选择课程期数"
-      },
-      "logo": {
-        "span": 24,
-        "rule": true,
-        "showTip": true,
-        "title": " 企业logo",
-        "type": "ZlSingleUpload",
-        "placeholder": "企业logo"
-      },
-      "type": {
-        "span": 24,
-        "filterable": true,
-        "rule": true,
-        "options": [
-          {
-            "label": "在线",
-            "value": 1
-          },
-          {
-            "label": "离线",
-            "value": 0
-          }
-        ],
-        "showTip": true,
-        "title": "企业类型",
-        "type": "select",
-        "placeholder": "企业类型"
-      },
-      "unifiedSocialCreditCode": {
-        "span": 24,
-        "rule": true,
-        "showTip": true,
-        "title": "统一社会信用代码",
-        "type": "input",
-        "placeholder": "统一社会信用代码"
-      },
-      "contact": {
-        "span": 24,
-        "rule": true,
-        "showTip": true,
-        "title": "联系人",
-        "type": "input",
-        "placeholder": "联系人"
-      },
-      "contactPhone": {
-        "span": 24,
-        "rule": true,
-        "showTip": true,
-        "title": "联系人电话",
-        "type": "input",
-        "placeholder": "电话"
-      },
-      "email": {
-        "span": 24,
-        "rule": true,
-        "showTip": true,
-        "title": "邮箱",
-        "type": "input",
-        "placeholder": "邮箱"
-      },
-      "disabledFlag": {
-        "span": 24,
-        "rule": true,
-        "options": [
-          {
-            "label": "在线",
-            "value": 1
-          },
-          {
-            "label": "离线",
-            "value": 0
-          }
-        ],
-        "showTip": true,
-        "title": "状态",
-        "type": "select",
-        "placeholder": "状态"
-      },
-      "ocr": {
-        "span": 24,
-        "rule": true,
-        "showTip": true,
-        "title": " 营业执照",
-        "type": "ZlFileListUpload",
-        "placeholder": "请上传营业执照"
-      }
-    }
+    "roleId": 1,
+    "roleName": "技术总监",
+    "roleRisk": null,
+    "roleCode": null,
+    "remark": "",
+    "_X_ROW_KEY": "row_13"
   },
+  "showDelete": false,
   "showSubmit": true,
-  "showDelete": false
+  "title": "",
+  "loading": false,
+  "type": "",
+  "columns": {
+    "roleName": {
+      "span": 24,
+      "rule": true,
+      "autosize": {
+        "minRows": 3
+      },
+      "showTip": true,
+      "title": "角色名称",
+      "type": "input",
+      "placeholder": "请输入"
+    },
+    "roleCode": {
+      "span": 24,
+      "autosize": {
+        "minRows": 3
+      },
+      "showTip": true,
+      "title": "角色编码",
+      "type": "input",
+      "placeholder": "请输入角色编码"
+    },
+    "roleRisk": {
+      "span": 24,
+      "autosize": {
+        "minRows": 3
+      },
+      "showTip": true,
+      "title": "风险点",
+      "type": "textarea",
+      "placeholder": "请输入风险点"
+    },
+    "remark": {
+      "span": 24,
+      "showTip": true,
+      "title": "备注",
+      "type": "input",
+      "placeholder": "请输入备注"
+    }
+  }
 }
